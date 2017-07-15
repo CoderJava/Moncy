@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Moncy</string>
+    <string name="image_view_currency_now">image view currency now</string>
+    <string name="image_view_circle_menu">image view circle menu</string>
+    <string name="image_view_list_currency">image view list currency</string>
+    <string name="image_view_historical_currency">image view historical currency</string>
+    <string name="historical_currency">History</string>
+    <string name="image_view_convert_currency">image view convert currency</string>
+    <string name="convert_currency">Convert</string>
+    <string name="image_view_data_offline">image view data offline</string>
+    <string name="image_view_blank">image view blank</string>
+    <string name="blank">Blank</string>
 </resources>

@@ -1,18 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ysn.moncy.MainActivity">
+    android:id="@+id/coordinator_layout_activity_main"
+    android:background="#f5f5f5"
+    tools:context="com.ysn.moncy.view.main.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/relative_layout_container_view_pager_banner_activity_main"
+        android:background="@android:color/darker_gray"
+        >
 
-</android.support.constraint.ConstraintLayout>
+        <!--<android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:id="@+id/view_pager_banner_activity_main"
+            />-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/relative_layout_container_content_menu_activity_main"
+        android:layout_marginTop="124dp"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear_layout_menu_row_1_activity_main"
+            android:orientation="horizontal"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relative_layout_item_menu_currency_now_activity_main"
+                android:layout_weight="1"
+                android:background="@drawable/background_menu_row_corner"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                >
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_circle_menu_row"
+                    android:contentDescription="@string/image_view_circle_menu"
+                    />
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:id="@+id/image_view_currency_now_activity_main"
+                    android:src="@drawable/ic_trending_up_orange_24dp"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/image_view_currency_now"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Currency Now"
+                    android:layout_below="@+id/image_view_currency_now_activity_main"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="1dp"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relative_layout_item_menu_list_currency_activity_main"
+                android:layout_weight="1"
+                android:background="@drawable/background_menu_row_corner"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                >
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:id="@+id/image_view_list_currency_activity_main"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_playlist_add_check_orange_24dp"
+                    android:contentDescription="@string/image_view_list_currency"
+                    />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_circle_menu_row"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/image_view_circle_menu"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image_view_list_currency_activity_main"
+                    android:text="List Currency"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear_layout_menu_row_2_activity_main"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_below="@+id/linear_layout_menu_row_1_activity_main"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relative_layout_item_menu_historical_currency_activity_main"
+                android:layout_weight="1"
+                android:background="@drawable/background_menu_row_corner"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                >
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:id="@+id/image_view_historical_currency_activity_main"
+                    android:src="@drawable/ic_history_cyan_24dp"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/image_view_historical_currency"
+                    />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_circle_menu_row"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/image_view_circle_menu"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/historical_currency"
+                    android:maxLines="1"
+                    android:layout_below="@+id/image_view_historical_currency_activity_main"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="1dp"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relative_layout_item_menu_convert_currency_activity_main"
+                android:background="@drawable/background_menu_row_corner"
+                android:layout_weight="1"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                >
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:id="@+id/image_view_convert_currency_activity_main"
+                    android:src="@drawable/ic_attach_money_orange_24dp"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/image_view_convert_currency"
+                    />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_circle_menu_row"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/image_view_circle_menu"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/convert_currency"
+                    android:layout_below="@+id/image_view_convert_currency_activity_main"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear_layout_menu_row_3_activity_main"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linear_layout_menu_row_2_activity_main"
+            android:layout_marginTop="24dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relative_layout_item_menu_data_offline_activity_main"
+                android:background="@drawable/background_menu_row_corner"
+                android:layout_weight="1"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                >
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:id="@+id/image_view_data_offline_activity_main"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_file_download_orange_24dp"
+                    android:contentDescription="@string/image_view_data_offline"
+                    />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_circle_menu_row"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/image_view_circle_menu"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data Offline"
+                    android:layout_below="@id/image_view_data_offline_activity_main"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="1dp"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_menu_row_corner"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                android:visibility="invisible"
+                >
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:id="@+id/image_view_blank_activity_main"
+                    android:src="@drawable/ic_file_download_orange_24dp"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/image_view_blank"
+                    />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_circle_menu_row"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/blank"
+                    android:layout_below="@+id/image_view_blank_activity_main"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
