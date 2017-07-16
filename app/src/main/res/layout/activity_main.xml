@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/coordinator_layout_activity_main"
     android:background="#f5f5f5"
-    tools:context="com.ysn.moncy.view.main.MainActivity">
+    tools:context="com.ysn.moncy.ui.main.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

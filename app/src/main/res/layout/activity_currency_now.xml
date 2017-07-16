@@ -1,76 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ysn.moncy.ui.trend.CurrencyNowActivity">
 
-    <data>
-
-        <import type="android.view.View" />
-
-        <variable
-            name="currencyNowViewModel"
-            type="com.ysn.moncy.viewmodel.CurrencyNowViewModel" />
-
-    </data>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_activity_currency_now"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <RelativeLayout
+        android:id="@+id/relative_layout_container_activity_currency_now"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.ysn.moncy.view.trend.CurrencyNowActivity">
+        android:layout_below="@+id/toolbar_activity_currency_now"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_activity_currency_now"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout_activity_currency_now"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:id="@+id/relative_layout_container_activity_currency_now"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar_activity_currency_now"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingTop="@dimen/activity_vertical_margin">
-
-            <android.support.v4.widget.SwipeRefreshLayout
-                android:id="@+id/swipe_refresh_layout_activity_currency_now"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/text_view_label_source_activity_currency_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Source"
+                    android:textColor="@android:color/darker_gray" />
 
-                    <TextView
-                        android:id="@+id/text_view_label_source_activity_currency_now"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:text="Source"
-                        android:textColor="@android:color/darker_gray" />
+                <TextView
+                    android:id="@+id/text_view_value_source_activity_currency_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_view_label_source_activity_currency_now"
+                    android:layout_centerHorizontal="true"
+                    android:text="USD"
+                    android:textSize="28sp" />
 
-                    <TextView
-                        android:id="@+id/text_view_value_source_activity_currency_now"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/text_view_label_source_activity_currency_now"
-                        android:layout_centerHorizontal="true"
-                        android:text="@{currencyNowViewModel."
-                        android:textSize="28sp" />
+                <TextView
+                    android:id="@+id/text_view_timestamp_activity_currency_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:id="@+id/text_view_timestamp_activity_currency_now"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+            </RelativeLayout>
 
-                </RelativeLayout>
-
-            </android.support.v4.widget.SwipeRefreshLayout>
-
-        </RelativeLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </RelativeLayout>
 
-</layout>
+</RelativeLayout>

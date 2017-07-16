@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 25
@@ -17,9 +19,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled true
-    }
+
 }
 
 dependencies {
@@ -31,14 +31,17 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'io.reactivex.rxjava2:rxjava:2.1.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.jakewharton:butterknife-compiler:8.7.0'
-    compile 'com.jakewharton:butterknife:8.7.0'
     compile 'com.android.support:design:25.3.1'
-    compile 'android.arch.lifecycle:extensions:1.0.0-alpha1'
-    compile 'android.arch.persistence.room:runtime:1.0.0-alpha1'
+    /*compile 'android.arch.lifecycle:extensions:1.0.0-alpha1'
+    compile 'android.arch.persistence.room:runtime:1.0.0-alpha1'*/
     testCompile 'junit:junit:4.12'
-    annotationProcessor 'android.arch.lifecycle:compiler:1.0.0-alpha1'
-    annotationProcessor 'android.arch.persistence.room:compiler:1.0.0-alpha1'
+    /*annotationProcessor 'android.arch.lifecycle:compiler:1.0.0-alpha1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.0.0-alpha1'*/
     compile 'javax.annotation:javax.annotation-api:1.2'
     compile 'com.google.code.gson:gson:2.8.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+
+repositories {
+    mavenCentral()
 }
