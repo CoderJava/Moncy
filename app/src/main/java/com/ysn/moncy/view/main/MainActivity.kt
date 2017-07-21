@@ -1,4 +1,4 @@
-package com.ysn.moncy.ui.main
+package com.ysn.moncy.view.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,16 +6,33 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 
 import com.ysn.moncy.R
-import com.ysn.moncy.ui.trend.CurrencyNowActivity
+import com.ysn.moncy.view.submenu.live.CurrencyNowActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), MainView, View.OnClickListener {
+
+    private val TAG = javaClass.simpleName
+    private var mainPresenter: MainPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initPresenter()
         initListener()
+        onAttachView()
+    }
+
+    private fun initPresenter() {
+        mainPresenter = MainPresenter()
+    }
+
+    override fun onAttachView() {
+        mainPresenter?.onAttach(this)
+    }
+
+    override fun onDetachView() {
+        mainPresenter?.onDetach()
     }
 
     private fun initListener() {
@@ -50,4 +67,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onDestroy() {
+        onDetachView()
+        super.onDestroy()
+    }
+
 }
+

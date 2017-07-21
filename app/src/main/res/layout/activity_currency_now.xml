@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ysn.moncy.ui.trend.CurrencyNowActivity">
+    tools:context=".view.submenu.live.CurrencyNowActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_activity_currency_now"
@@ -19,7 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar_activity_currency_now"
-        android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <android.support.v4.widget.SwipeRefreshLayout
@@ -51,7 +50,28 @@
                 <TextView
                     android:id="@+id/text_view_timestamp_activity_currency_now"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="16-Juli-2017 11:04"
+                    android:textStyle="italic"
+                    android:layout_below="@+id/text_view_value_source_activity_currency_now"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/view_divider_horizontal_activity_currency_now"
+                    android:background="@android:color/darker_gray"
+                    android:layout_below="@+id/text_view_timestamp_activity_currency_now"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/recycler_view_data_activity_currency_now"
+                    android:layout_below="@+id/view_divider_horizontal_activity_currency_now"
+                    />
 
             </RelativeLayout>
 

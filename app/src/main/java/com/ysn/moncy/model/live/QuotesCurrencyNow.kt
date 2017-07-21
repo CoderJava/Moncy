@@ -1,348 +1,348 @@
-package com.ysn.moncy.model.trend
+package com.ysn.moncy.model.live
 
 import javax.annotation.Generated
 import com.google.gson.annotations.SerializedName
 
 @Generated("net.hexar.json2pojo")
-data class Quotes (
+data class QuotesCurrencyNow(
 
     @SerializedName("USDAED")
-    var usdaed: Double?,
+    var usdaed: Double = 0.0,
     @SerializedName("USDAFN")
-    var usdafn: Double,
+    var usdafn: Double = 0.0,
     @SerializedName("USDALL")
-    var usdall: Double,
+    var usdall: Double = 0.0,
     @SerializedName("USDAMD")
-    var usdamd: Double,
+    var usdamd: Double = 0.0,
     @SerializedName("USDANG")
-    var usdang: Double,
+    var usdang: Double = 0.0,
     @SerializedName("USDAOA")
-    var usdaoa: Double,
+    var usdaoa: Double = 0.0,
     @SerializedName("USDARS")
-    var usdars: Double,
+    var usdars: Double = 0.0,
     @SerializedName("USDAUD")
-    var usdaud: Double,
+    var usdaud: Double = 0.0,
     @SerializedName("USDAWG")
-    var usdawg: Double,
+    var usdawg: Double = 0.0,
     @SerializedName("USDAZN")
-    var usdazn: Double,
+    var usdazn: Double = 0.0,
     @SerializedName("USDBAM")
-    var usdbam: Double,
+    var usdbam: Double = 0.0,
     @SerializedName("USDBBD")
-    var usdbbd: Long,
+    var usdbbd: Long = 0L,
     @SerializedName("USDBDT")
-    var usdbdt: Double,
+    var usdbdt: Double = 0.0,
     @SerializedName("USDBGN")
-    var usdbgn: Double,
+    var usdbgn: Double = 0.0,
     @SerializedName("USDBHD")
-    var usdbhd: Double,
+    var usdbhd: Double = 0.0,
     @SerializedName("USDBIF")
-    var usdbif: Double,
+    var usdbif: Double = 0.0,
     @SerializedName("USDBMD")
-    var usdbmd: Long,
+    var usdbmd: Long = 0L,
     @SerializedName("USDBND")
-    var usdbnd: Double,
+    var usdbnd: Double = 0.0,
     @SerializedName("USDBOB")
-    var usdbob: Double,
+    var usdbob: Double = 0.0,
     @SerializedName("USDBRL")
-    var usdbrl: Double,
+    var usdbrl: Double = 0.0,
     @SerializedName("USDBSD")
-    var usdbsd: Long,
+    var usdbsd: Long = 0L,
     @SerializedName("USDBTC")
-    var usdbtc: Double,
+    var usdbtc: Double = 0.0,
     @SerializedName("USDBTN")
-    var usdbtn: Double,
+    var usdbtn: Double = 0.0,
     @SerializedName("USDBWP")
-    var usdbwp: Double,
+    var usdbwp: Double = 0.0,
     @SerializedName("USDBYN")
-    var usdbyn: Double,
+    var usdbyn: Double = 0.0,
     @SerializedName("USDBYR")
-    var usdbyr: Long,
+    var usdbyr: Long = 0L,
     @SerializedName("USDBZD")
-    var usdbzd: Double,
+    var usdbzd: Double = 0.0,
     @SerializedName("USDCAD")
-    var usdcad: Double,
+    var usdcad: Double = 0.0,
     @SerializedName("USDCDF")
-    var usdcdf: Double,
+    var usdcdf: Double = 0.0,
     @SerializedName("USDCHF")
-    var usdchf: Double,
+    var usdchf: Double = 0.0,
     @SerializedName("USDCLF")
-    var usdclf: Double,
+    var usdclf: Double = 0.0,
     @SerializedName("USDCLP")
-    var usdclp: Double,
+    var usdclp: Double = 0.0,
     @SerializedName("USDCNY")
-    var usdcny: Double,
+    var usdcny: Double = 0.0,
     @SerializedName("USDCOP")
-    var usdcop: Double,
+    var usdcop: Double = 0.0,
     @SerializedName("USDCRC")
-    var usdcrc: Double,
+    var usdcrc: Double = 0.0,
     @SerializedName("USDCUC")
-    var usdcuc: Long,
+    var usdcuc: Long = 0L,
     @SerializedName("USDCUP")
-    var usdcup: Double,
+    var usdcup: Double = 0.0,
     @SerializedName("USDCVE")
-    var usdcve: Double,
+    var usdcve: Double = 0.0,
     @SerializedName("USDCZK")
-    var usdczk: Double,
+    var usdczk: Double = 0.0,
     @SerializedName("USDDJF")
-    var usddjf: Double,
+    var usddjf: Double = 0.0,
     @SerializedName("USDDKK")
-    var usddkk: Double,
+    var usddkk: Double = 0.0,
     @SerializedName("USDDOP")
-    var usddop: Double,
+    var usddop: Double = 0.0,
     @SerializedName("USDDZD")
-    var usddzd: Double,
+    var usddzd: Double = 0.0,
     @SerializedName("USDEEK")
-    var usdeek: Double,
+    var usdeek: Double = 0.0,
     @SerializedName("USDEGP")
-    var usdegp: Double,
+    var usdegp: Double = 0.0,
     @SerializedName("USDERN")
-    var usdern: Double,
+    var usdern: Double = 0.0,
     @SerializedName("USDETB")
-    var usdetb: Double,
+    var usdetb: Double = 0.0,
     @SerializedName("USDEUR")
-    var usdeur: Double,
+    var usdeur: Double = 0.0,
     @SerializedName("USDFJD")
-    var usdfjd: Double,
+    var usdfjd: Double = 0.0,
     @SerializedName("USDFKP")
-    var usdfkp: Double,
+    var usdfkp: Double = 0.0,
     @SerializedName("USDGBP")
-    var usdgbp: Double,
+    var usdgbp: Double = 0.0,
     @SerializedName("USDGEL")
-    var usdgel: Double,
+    var usdgel: Double = 0.0,
     @SerializedName("USDGGP")
-    var usdggp: Double,
+    var usdggp: Double = 0.0,
     @SerializedName("USDGHS")
-    var usdghs: Double,
+    var usdghs: Double = 0.0,
     @SerializedName("USDGIP")
-    var usdgip: Double,
+    var usdgip: Double = 0.0,
     @SerializedName("USDGMD")
-    var usdgmd: Double,
+    var usdgmd: Double = 0.0,
     @SerializedName("USDGNF")
-    var usdgnf: Double,
+    var usdgnf: Double = 0.0,
     @SerializedName("USDGTQ")
-    var usdgtq: Double,
+    var usdgtq: Double = 0.0,
     @SerializedName("USDGYD")
-    var usdgyd: Double,
+    var usdgyd: Double = 0.0,
     @SerializedName("USDHKD")
-    var usdhkd: Double,
+    var usdhkd: Double = 0.0,
     @SerializedName("USDHNL")
-    var usdhnl: Double,
+    var usdhnl: Double = 0.0,
     @SerializedName("USDHRK")
-    var usdhrk: Double,
+    var usdhrk: Double = 0.0,
     @SerializedName("USDHTG")
-    var usdhtg: Double,
+    var usdhtg: Double = 0.0,
     @SerializedName("USDHUF")
-    var usdhuf: Double,
+    var usdhuf: Double = 0.0,
     @SerializedName("USDIDR")
-    var usdidr: Long,
+    var usdidr: Long = 0L,
     @SerializedName("USDILS")
-    var usdils: Double,
+    var usdils: Double = 0.0,
     @SerializedName("USDIMP")
-    var usdimp: Double,
+    var usdimp: Double = 0.0,
     @SerializedName("USDINR")
-    var usdinr: Double,
+    var usdinr: Double = 0.0,
     @SerializedName("USDIQD")
-    var usdiqd: Long,
+    var usdiqd: Long = 0L,
     @SerializedName("USDIRR")
-    var usdirr: Double,
+    var usdirr: Double = 0.0,
     @SerializedName("USDISK")
-    var usdisk: Double,
+    var usdisk: Double = 0.0,
     @SerializedName("USDJEP")
-    var usdjep: Double,
+    var usdjep: Double = 0.0,
     @SerializedName("USDJMD")
-    var usdjmd: Double,
+    var usdjmd: Double = 0.0,
     @SerializedName("USDJOD")
-    var usdjod: Double,
+    var usdjod: Double = 0.0,
     @SerializedName("USDJPY")
-    var usdjpy: Double,
+    var usdjpy: Double = 0.0,
     @SerializedName("USDKES")
-    var usdkes: Double,
+    var usdkes: Double = 0.0,
     @SerializedName("USDKGS")
-    var usdkgs: Double,
+    var usdkgs: Double = 0.0,
     @SerializedName("USDKHR")
-    var usdkhr: Double,
+    var usdkhr: Double = 0.0,
     @SerializedName("USDKMF")
-    var usdkmf: Double,
+    var usdkmf: Double = 0.0,
     @SerializedName("USDKPW")
-    var usdkpw: Double,
+    var usdkpw: Double = 0.0,
     @SerializedName("USDKRW")
-    var usdkrw: Double,
+    var usdkrw: Double = 0.0,
     @SerializedName("USDKWD")
-    var usdkwd: Double,
+    var usdkwd: Double = 0.0,
     @SerializedName("USDKYD")
-    var usdkyd: Double,
+    var usdkyd: Double = 0.0,
     @SerializedName("USDKZT")
-    var usdkzt: Double,
+    var usdkzt: Double = 0.0,
     @SerializedName("USDLAK")
-    var usdlak: Double,
+    var usdlak: Double = 0.0,
     @SerializedName("USDLBP")
-    var usdlbp: Double,
+    var usdlbp: Double = 0.0,
     @SerializedName("USDLKR")
-    var usdlkr: Double,
+    var usdlkr: Double = 0.0,
     @SerializedName("USDLRD")
-    var usdlrd: Double,
+    var usdlrd: Double = 0.0,
     @SerializedName("USDLSL")
-    var usdlsl: Double,
+    var usdlsl: Double = 0.0,
     @SerializedName("USDLTL")
-    var usdltl: Double,
+    var usdltl: Double = 0.0,
     @SerializedName("USDLVL")
-    var usdlvl: Double,
+    var usdlvl: Double = 0.0,
     @SerializedName("USDLYD")
-    var usdlyd: Double,
+    var usdlyd: Double = 0.0,
     @SerializedName("USDMAD")
-    var usdmad: Double,
+    var usdmad: Double = 0.0,
     @SerializedName("USDMDL")
-    var usdmdl: Double,
+    var usdmdl: Double = 0.0,
     @SerializedName("USDMGA")
-    var usdmga: Double,
+    var usdmga: Double = 0.0,
     @SerializedName("USDMKD")
-    var usdmkd: Double,
+    var usdmkd: Double = 0.0,
     @SerializedName("USDMMK")
-    var usdmmk: Double,
+    var usdmmk: Double = 0.0,
     @SerializedName("USDMNT")
-    var usdmnt: Double,
+    var usdmnt: Double = 0.0,
     @SerializedName("USDMOP")
-    var usdmop: Double,
+    var usdmop: Double = 0.0,
     @SerializedName("USDMRO")
-    var usdmro: Double,
+    var usdmro: Double = 0.0,
     @SerializedName("USDMUR")
-    var usdmur: Double,
+    var usdmur: Double = 0.0,
     @SerializedName("USDMVR")
-    var usdmvr: Double,
+    var usdmvr: Double = 0.0,
     @SerializedName("USDMWK")
-    var usdmwk: Double,
+    var usdmwk: Double = 0.0,
     @SerializedName("USDMXN")
-    var usdmxn: Double,
+    var usdmxn: Double = 0.0,
     @SerializedName("USDMYR")
-    var usdmyr: Double,
+    var usdmyr: Double = 0.0,
     @SerializedName("USDMZN")
-    var usdmzn: Double,
+    var usdmzn: Double = 0.0,
     @SerializedName("USDNAD")
-    var usdnad: Double,
+    var usdnad: Double = 0.0,
     @SerializedName("USDNGN")
-    var usdngn: Double,
+    var usdngn: Double = 0.0,
     @SerializedName("USDNIO")
-    var usdnio: Double,
+    var usdnio: Double = 0.0,
     @SerializedName("USDNOK")
-    var usdnok: Double,
+    var usdnok: Double = 0.0,
     @SerializedName("USDNPR")
-    var usdnpr: Double,
+    var usdnpr: Double = 0.0,
     @SerializedName("USDNZD")
-    var usdnzd: Double,
+    var usdnzd: Double = 0.0,
     @SerializedName("USDOMR")
-    var usdomr: Double,
+    var usdomr: Double = 0.0,
     @SerializedName("USDPAB")
-    var usdpab: Long,
+    var usdpab: Long = 0L,
     @SerializedName("USDPEN")
-    var usdpen: Double,
+    var usdpen: Double = 0.0,
     @SerializedName("USDPGK")
-    var usdpgk: Double,
+    var usdpgk: Double = 0.0,
     @SerializedName("USDPHP")
-    var usdphp: Double,
+    var usdphp: Double = 0.0,
     @SerializedName("USDPKR")
-    var usdpkr: Double,
+    var usdpkr: Double = 0.0,
     @SerializedName("USDPLN")
-    var usdpln: Double,
+    var usdpln: Double = 0.0,
     @SerializedName("USDPYG")
-    var usdpyg: Double,
+    var usdpyg: Double = 0.0,
     @SerializedName("USDQAR")
-    var usdqar: Double,
+    var usdqar: Double = 0.0,
     @SerializedName("USDRON")
-    var usdron: Double,
+    var usdron: Double = 0.0,
     @SerializedName("USDRSD")
-    var usdrsd: Double,
+    var usdrsd: Double = 0.0,
     @SerializedName("USDRUB")
-    var usdrub: Double,
+    var usdrub: Double = 0.0,
     @SerializedName("USDRWF")
-    var usdrwf: Double,
+    var usdrwf: Double = 0.0,
     @SerializedName("USDSAR")
-    var usdsar: Double,
+    var usdsar: Double = 0.0,
     @SerializedName("USDSBD")
-    var usdsbd: Double,
+    var usdsbd: Double = 0.0,
     @SerializedName("USDSCR")
-    var usdscr: Double,
+    var usdscr: Double = 0.0,
     @SerializedName("USDSDG")
-    var usdsdg: Double,
+    var usdsdg: Double = 0.0,
     @SerializedName("USDSEK")
-    var usdsek: Double,
+    var usdsek: Double = 0.0,
     @SerializedName("USDSGD")
-    var usdsgd: Double,
+    var usdsgd: Double = 0.0,
     @SerializedName("USDSHP")
-    var usdshp: Double,
+    var usdshp: Double = 0.0,
     @SerializedName("USDSLL")
-    var usdsll: Double,
+    var usdsll: Double = 0.0,
     @SerializedName("USDSOS")
-    var usdsos: Double,
+    var usdsos: Double = 0.0,
     @SerializedName("USDSRD")
-    var usdsrd: Double,
+    var usdsrd: Double = 0.0,
     @SerializedName("USDSTD")
-    var usdstd: Double,
+    var usdstd: Double = 0.0,
     @SerializedName("USDSVC")
-    var usdsvc: Double,
+    var usdsvc: Double = 0.0,
     @SerializedName("USDSYP")
-    var usdsyp: Double,
+    var usdsyp: Double = 0.0,
     @SerializedName("USDSZL")
-    var usdszl: Double,
+    var usdszl: Double = 0.0,
     @SerializedName("USDTHB")
-    var usdthb: Double,
+    var usdthb: Double = 0.0,
     @SerializedName("USDTJS")
-    var usdtjs: Double,
+    var usdtjs: Double = 0.0,
     @SerializedName("USDTMT")
-    var usdtmt: Double,
+    var usdtmt: Double = 0.0,
     @SerializedName("USDTND")
-    var usdtnd: Double,
+    var usdtnd: Double = 0.0,
     @SerializedName("USDTOP")
-    var usdtop: Double,
+    var usdtop: Double = 0.0,
     @SerializedName("USDTRY")
-    var usdtry: Double,
+    var usdtry: Double = 0.0,
     @SerializedName("USDTTD")
-    var usdttd: Double,
+    var usdttd: Double = 0.0,
     @SerializedName("USDTWD")
-    var usdtwd: Double,
+    var usdtwd: Double = 0.0,
     @SerializedName("USDTZS")
-    var usdtzs: Double,
+    var usdtzs: Double = 0.0,
     @SerializedName("USDUAH")
-    var usduah: Double,
+    var usduah: Double = 0.0,
     @SerializedName("USDUGX")
-    var usdugx: Double,
+    var usdugx: Double = 0.0,
     @SerializedName("USDUSD")
-    var usdusd: Long,
+    var usdusd: Long = 0L,
     @SerializedName("USDUYU")
-    var usduyu: Double,
+    var usduyu: Double = 0.0,
     @SerializedName("USDUZS")
-    var usduzs: Double,
+    var usduzs: Double = 0.0,
     @SerializedName("USDVEF")
-    var usdvef: Double,
+    var usdvef: Double = 0.0,
     @SerializedName("USDVND")
-    var usdvnd: Long,
+    var usdvnd: Long = 0L,
     @SerializedName("USDVUV")
-    var usdvuv: Double,
+    var usdvuv: Double = 0.0,
     @SerializedName("USDWST")
-    var usdwst: Double,
+    var usdwst: Double = 0.0,
     @SerializedName("USDXAF")
-    var usdxaf: Double,
+    var usdxaf: Double = 0.0,
     @SerializedName("USDXAG")
-    var usdxag: Double,
+    var usdxag: Double = 0.0,
     @SerializedName("USDXAU")
-    var usdxau: Double,
+    var usdxau: Double = 0.0,
     @SerializedName("USDXCD")
-    var usdxcd: Double,
+    var usdxcd: Double = 0.0,
     @SerializedName("USDXDR")
-    var usdxdr: Double,
+    var usdxdr: Double = 0.0,
     @SerializedName("USDXOF")
-    var usdxof: Double,
+    var usdxof: Double = 0.0,
     @SerializedName("USDXPF")
-    var usdxpf: Double,
+    var usdxpf: Double = 0.0,
     @SerializedName("USDYER")
-    var usdyer: Double,
+    var usdyer: Double = 0.0,
     @SerializedName("USDZAR")
-    var usdzar: Double,
+    var usdzar: Double = 0.0,
     @SerializedName("USDZMK")
-    var usdzmk: Double,
+    var usdzmk: Double = 0.0,
     @SerializedName("USDZMW")
-    var usdzmw: Double,
+    var usdzmw: Double = 0.0,
     @SerializedName("USDZWL")
-    var usdzwl: Double
+    var usdzwl: Double = 0.0
 
 )

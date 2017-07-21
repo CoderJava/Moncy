@@ -10,4 +10,5 @@
     <string name="image_view_data_offline">image view data offline</string>
     <string name="image_view_blank">image view blank</string>
     <string name="blank">Blank</string>
+    <string name="image_view_icon_country">image view icon country</string>
 </resources>
