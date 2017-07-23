@@ -7,5 +7,8 @@ import com.ysn.moncy.view.base.mvp.MvpView
  */
 interface CurrencyNowView : MvpView {
 
+    fun loadDataCurrency()
+
+    fun loadDataCurrencyFailed()
 
 }

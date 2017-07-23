@@ -1,31 +1,23 @@
 package com.ysn.moncy.view.main.adapter
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.ysn.moncy.R
-import com.ysn.moncy.model.country.Country
-import com.ysn.moncy.model.live.CurrencyNow
 import kotlinx.android.synthetic.main.item_currency_now_body.view.*
 
 /**
  * Created by root on 21/07/17.
  */
-class AdapterCurrencyNow(context: Context, listCurrencyNow: List<CurrencyNow>, listCountry: List<Country>) : RecyclerView.Adapter<AdapterCurrencyNow.ViewHolder>() {
+class AdapterCurrencyNow(context: Context, listQuotesLabels: ArrayList<String>, listQuotesValues: ArrayList<String>) : RecyclerView.Adapter<AdapterCurrencyNow.ViewHolder>() {
 
     private val TAG = javaClass.simpleName
     private var context: Context = context
-    private var listCurrencyNow: List<CurrencyNow> = listCurrencyNow
-    private var listCountry: List<Country> = listCountry
+    private var listQuotesLabels = listQuotesLabels
+    private var listQuotesValues = listQuotesValues
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view: View
@@ -54,15 +46,15 @@ class AdapterCurrencyNow(context: Context, listCurrencyNow: List<CurrencyNow>, l
             0 -> {
                 /** header */
             }
-            listCurrencyNow.size - 1 -> {
+            listQuotesLabels.size - 1 -> {
                 /** footer */
             }
             else -> {
                 /** body */
                 val viewHolderCurrencyNowBody = holder as ViewHolderCurrencyNowBody
-                Glide.with(context)
+                /*Glide.with(context)
                         .asBitmap()
-                        .load(listCountry[position].flag)
+                        .load(listCountry[position])
                         .apply(RequestOptions.centerCropTransform())
                         .into(object : BitmapImageViewTarget(viewHolderCurrencyNowBody.itemView.image_view_flag_country_item_currency_now_body) {
                             override fun setResource(resource: Bitmap?) {
@@ -70,23 +62,29 @@ class AdapterCurrencyNow(context: Context, listCurrencyNow: List<CurrencyNow>, l
                                         .create(context.resources, resource)
                                 bitmapRounded.isCircular = true
                                 viewHolderCurrencyNowBody.itemView
-                                        .image_view_flag_country_item_currency_now_body.setImageDrawable(bitmapRounded)
-                                // sampai di sini
+                                        .image_view_flag_country_item_currency_now_body
+                                        .setImageDrawable(bitmapRounded)
                             }
-                        })
+                        })*/
+                viewHolderCurrencyNowBody.itemView
+                        .text_view_label_currency_item_currency_now_body
+                        .text = listQuotesLabels[position]
+                viewHolderCurrencyNowBody.itemView
+                        .text_view_value_currency_item_currency_now_body
+                        .text = listQuotesValues[position]
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return listCurrencyNow.size
+        return listQuotesLabels.size
     }
 
     override fun getItemViewType(position: Int): Int {
         if (position == 0) {
             /** header */
             return 0
-        } else if (position == listCurrencyNow.size - 1) {
+        } else if (position == listQuotesLabels.size - 1) {
             /** footer */
             return 2
         } else {
@@ -95,23 +93,13 @@ class AdapterCurrencyNow(context: Context, listCurrencyNow: List<CurrencyNow>, l
         }
     }
 
-    open class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
+    inner open class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
 
-    class ViewHolderCurrencyNowHeader(itemView: View?) : ViewHolder(itemView)
+    inner class ViewHolderCurrencyNowHeader(itemView: View?) : ViewHolder(itemView)
 
-    class ViewHolderCurrencyNowBody(itemView: View?) : ViewHolder(itemView) /*{
+    inner class ViewHolderCurrencyNowBody(itemView: View?) : ViewHolder(itemView)
 
-        val imageViewFlagCountryViewHolderCurrencyNowBody: ImageView =
-                itemView?.findViewById(R.id.image_view_flag_country_item_currency_now_body) as ImageView
-        val textViewLabelCurrencyViewHolderCurrencyNowBody: TextView =
-                itemView?.findViewById(R.id.text_view_label_currency_item_currency_now_body) as TextView
-        val textViewValueCurrencyViewHolderCurrencyNowBody: TextView =
-                itemView?.findViewById(R.id.text_view_value_currency_item_currency_now_body) as TextView
-        val textViewCountryNameViewHolderCurrencyNowBody: TextView =
-                itemView?.findViewById(R.id.text_view_country_name_item_currency_now_body) as TextView
-
-    }*/
-
-    class ViewHolderCurrencyNowFooter(itemView: View?) : ViewHolder(itemView)
+    inner class ViewHolderCurrencyNowFooter(itemView: View?) : ViewHolder(itemView)
 
 }
+

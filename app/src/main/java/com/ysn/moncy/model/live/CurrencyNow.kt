@@ -1,22 +1,13 @@
 package com.ysn.moncy.model.live
 
-import javax.annotation.Generated
-import com.google.gson.annotations.SerializedName
-
-@Generated("net.hexar.json2pojo")
-data class CurrencyNow(
-
-        @SerializedName("privacy")
-        var privacy: String = "",
-        @SerializedName("quotes")
-        var quotesCurrencyNow: QuotesCurrencyNow = QuotesCurrencyNow(),
-        @SerializedName("source")
-        var source: String = "",
-        @SerializedName("success")
-        var success: Boolean = true,
-        @SerializedName("terms")
-        var terms: String = "",
-        @SerializedName("timestamp")
-        var timestamp: Long = 0L
-
+/**
+ * Created by root on 23/07/17.
+ */
+data class CurrencyNow (
+        var success: Boolean,
+        var terms: String,
+        var privacy: String,
+        var timestamp: Long,
+        var source: String,
+        var quotes: Map<String, Double>
 )
