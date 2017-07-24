@@ -15,7 +15,6 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <RelativeLayout
-        android:id="@+id/relative_layout_container_activity_currency_now"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar_activity_currency_now"
@@ -27,8 +26,11 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
+                android:id="@+id/relative_layout_container_activity_currency_now"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                >
 
                 <TextView
                     android:id="@+id/text_view_label_source_activity_currency_now"
@@ -51,31 +53,66 @@
                     android:id="@+id/text_view_timestamp_activity_currency_now"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="16-Juli-2017 11:04"
-                    android:textStyle="italic"
                     android:layout_below="@+id/text_view_value_source_activity_currency_now"
                     android:layout_centerHorizontal="true"
-                    />
+                    android:text="16-Juli-2017 11:04"
+                    android:textStyle="italic" />
 
                 <View
+                    android:id="@+id/view_divider_horizontal_activity_currency_now"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:id="@+id/view_divider_horizontal_activity_currency_now"
-                    android:background="@android:color/darker_gray"
                     android:layout_below="@+id/text_view_timestamp_activity_currency_now"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
-                    />
+                    android:background="@android:color/darker_gray" />
 
                 <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_data_activity_currency_now"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/recycler_view_data_activity_currency_now"
-                    android:layout_below="@+id/view_divider_horizontal_activity_currency_now"
-                    />
+                    android:layout_below="@+id/view_divider_horizontal_activity_currency_now" />
 
             </RelativeLayout>
 
         </android.support.v4.widget.SwipeRefreshLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_container_refresh_activity_currency_now"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/text_view_message_load_data_failed_activity_currency_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/no_data_available"
+            android:textAllCaps="true"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button_try_again_activity_currency_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_message_load_data_failed_activity_currency_now"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_button_try_again"
+            android:text="@string/try_again"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingTop="13dp"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="13dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            />
 
     </RelativeLayout>
 

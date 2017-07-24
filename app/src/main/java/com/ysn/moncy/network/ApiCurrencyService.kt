@@ -1,6 +1,7 @@
 package com.ysn.moncy.network
 
 import com.ysn.moncy.model.live.CurrencyNow
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.http.GET

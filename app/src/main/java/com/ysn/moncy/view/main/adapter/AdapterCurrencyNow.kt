@@ -1,23 +1,28 @@
 package com.ysn.moncy.view.main.adapter
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.ysn.moncy.R
+import com.ysn.moncy.model.country.Country
+import com.ysn.moncy.model.merge.MergeLive
 import kotlinx.android.synthetic.main.item_currency_now_body.view.*
 
 /**
  * Created by root on 21/07/17.
  */
-class AdapterCurrencyNow(context: Context, listQuotesLabels: ArrayList<String>, listQuotesValues: ArrayList<String>) : RecyclerView.Adapter<AdapterCurrencyNow.ViewHolder>() {
+class AdapterCurrencyNow(context: Context, listMergeLive: ArrayList<MergeLive>) : RecyclerView.Adapter<AdapterCurrencyNow.ViewHolder>() {
 
     private val TAG = javaClass.simpleName
     private var context: Context = context
-    private var listQuotesLabels = listQuotesLabels
-    private var listQuotesValues = listQuotesValues
+    private var listMergeLive = listMergeLive
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view: View
@@ -46,19 +51,21 @@ class AdapterCurrencyNow(context: Context, listQuotesLabels: ArrayList<String>, 
             0 -> {
                 /** header */
             }
-            listQuotesLabels.size - 1 -> {
+            listMergeLive.size - 1 -> {
                 /** footer */
             }
             else -> {
                 /** body */
                 val viewHolderCurrencyNowBody = holder as ViewHolderCurrencyNowBody
+
+                /** failed load image */
                 /*Glide.with(context)
                         .asBitmap()
-                        .load(listCountry[position])
+                        .load(listMergeLive[position].flag)
                         .apply(RequestOptions.centerCropTransform())
                         .into(object : BitmapImageViewTarget(viewHolderCurrencyNowBody.itemView.image_view_flag_country_item_currency_now_body) {
                             override fun setResource(resource: Bitmap?) {
-                                var bitmapRounded = RoundedBitmapDrawableFactory
+                                val bitmapRounded = RoundedBitmapDrawableFactory
                                         .create(context.resources, resource)
                                 bitmapRounded.isCircular = true
                                 viewHolderCurrencyNowBody.itemView
@@ -68,23 +75,26 @@ class AdapterCurrencyNow(context: Context, listQuotesLabels: ArrayList<String>, 
                         })*/
                 viewHolderCurrencyNowBody.itemView
                         .text_view_label_currency_item_currency_now_body
-                        .text = listQuotesLabels[position]
+                        .text = listMergeLive[position].label
                 viewHolderCurrencyNowBody.itemView
                         .text_view_value_currency_item_currency_now_body
-                        .text = listQuotesValues[position]
+                        .text = listMergeLive[position].value
+                viewHolderCurrencyNowBody.itemView
+                        .text_view_country_name_item_currency_now_body
+                        .text = listMergeLive[position].countryName
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return listQuotesLabels.size
+        return listMergeLive.size
     }
 
     override fun getItemViewType(position: Int): Int {
         if (position == 0) {
             /** header */
             return 0
-        } else if (position == listQuotesLabels.size - 1) {
+        } else if (position == listMergeLive.size - 1) {
             /** footer */
             return 2
         } else {

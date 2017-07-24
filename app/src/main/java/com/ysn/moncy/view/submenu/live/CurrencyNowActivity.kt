@@ -2,11 +2,19 @@ package com.ysn.moncy.view.submenu.live
 
 import android.app.ProgressDialog
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
+import android.view.View
 import com.ysn.moncy.R
+import com.ysn.moncy.model.live.CurrencyNow
+import com.ysn.moncy.view.main.adapter.AdapterCurrencyNow
+import kotlinx.android.synthetic.main.activity_currency_now.*
+import java.text.SimpleDateFormat
+import java.util.*
 
-class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView {
+class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickListener {
 
     private val TAG = javaClass.simpleName
     private var currencyNowPresenter: CurrencyNowPresenter? = null
@@ -17,18 +25,65 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView {
         setContentView(R.layout.activity_currency_now)
         initPresenter()
         onAttachView()
+        initToolbar()
+        initListener()
         doLoadData()
     }
 
+    private fun initListener() {
+        button_try_again_activity_currency_now.setOnClickListener(this)
+
+        swipe_refresh_layout_activity_currency_now.setOnRefreshListener {
+            doRefreshData()
+        }
+    }
+
+    private fun doRefreshData() {
+        swipe_refresh_layout_activity_currency_now.isRefreshing = true
+        relative_layout_container_activity_currency_now?.visibility = View.GONE
+        relative_layout_container_refresh_activity_currency_now?.visibility = View.GONE
+        currencyNowPresenter?.onLoadData(this, true)
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            button_try_again_activity_currency_now.id -> {
+                doRefreshData()
+            }
+            else -> {
+                /** nothing to do in here */
+            }
+        }
+    }
+
+    private fun initToolbar() {
+        toolbar_activity_currency_now.title = "Currency Now"
+        setSupportActionBar(toolbar_activity_currency_now)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+
     private fun doLoadData() {
         initProgressDialog()
-        currencyNowPresenter?.onLoadDataCurrency(this)
+        relative_layout_container_activity_currency_now.visibility = View.GONE
+        relative_layout_container_refresh_activity_currency_now.visibility = View.GONE
+        currencyNowPresenter?.onLoadData(this)
     }
 
     private fun initProgressDialog() {
-        if (progressDialog == null) {
-            progressDialog = ProgressDialog(this)
-        }
+        progressDialog = ProgressDialog(this)
         progressDialog.setMessage(getString(R.string.please_wait))
         progressDialog.setCancelable(false)
         progressDialog.show()
@@ -51,14 +106,40 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView {
         super.onDestroy()
     }
 
-    override fun loadDataCurrency() {
-        currencyNowPresenter?.onLoadDataCountry()
+    override fun loadData(adapterCurrencyNow: AdapterCurrencyNow, currencyNow: CurrencyNow?, isRefresh: Boolean) {
+        setProgressViewDone(isRefresh)
+
+        relative_layout_container_activity_currency_now.visibility = View.VISIBLE
+        relative_layout_container_refresh_activity_currency_now.visibility = View.GONE
+
+        text_view_label_source_activity_currency_now.text = currencyNow?.source
+        val timestamp = currencyNow?.timestamp as Long
+        val dateNow = Date(timestamp)
+        text_view_timestamp_activity_currency_now.text = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.US)
+                .format(dateNow)
+
+        recycler_view_data_activity_currency_now.layoutManager = LinearLayoutManager(this)
+        recycler_view_data_activity_currency_now.adapter = adapterCurrencyNow
     }
 
-    override fun loadDataCurrencyFailed() {
-        progressDialog.dismiss()
-        val builder = AlertDialog.Builder(this)
-                .setMessage("Load data failed")
-        builder.create().show()
+    override fun loadDataFailed(isRefresh: Boolean) {
+        setProgressViewDone(isRefresh)
+
+        relative_layout_container_activity_currency_now.visibility = View.GONE
+        relative_layout_container_refresh_activity_currency_now.visibility = View.VISIBLE
+        showSnackbarFailed()
     }
+
+    private fun setProgressViewDone(isRefresh: Boolean) {
+        if (!isRefresh)
+            progressDialog.dismiss()
+        else
+            swipe_refresh_layout_activity_currency_now.isRefreshing = false
+    }
+
+    private fun showSnackbarFailed() {
+        Snackbar.make(findViewById(android.R.id.content), getString(R.string.load_data_failed), Snackbar.LENGTH_LONG)
+                .show()
+    }
+
 }
