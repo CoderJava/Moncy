@@ -112,11 +112,9 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
         relative_layout_container_activity_currency_now.visibility = View.VISIBLE
         relative_layout_container_refresh_activity_currency_now.visibility = View.GONE
 
-        text_view_label_source_activity_currency_now.text = currencyNow?.source
-        val timestamp = currencyNow?.timestamp as Long
-        val dateNow = Date(timestamp)
+        text_view_value_source_activity_currency_now.text = currencyNow?.source
         text_view_timestamp_activity_currency_now.text = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.US)
-                .format(dateNow)
+                .format(Date())
 
         recycler_view_data_activity_currency_now.layoutManager = LinearLayoutManager(this)
         recycler_view_data_activity_currency_now.adapter = adapterCurrencyNow

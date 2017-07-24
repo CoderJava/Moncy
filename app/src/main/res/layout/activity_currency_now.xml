@@ -82,7 +82,7 @@
         android:id="@+id/relative_layout_container_refresh_activity_currency_now"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/text_view_message_load_data_failed_activity_currency_now"

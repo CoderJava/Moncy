@@ -86,8 +86,13 @@ class CurrencyNowPresenter : MvpPresenter<CurrencyNowView> {
                                     for (currency in listCountryTemp[b].currencies) {
                                         val code = currency.code
                                         if (code == codeQuote) {
-                                            countryName = listCountryTemp[b].name
-                                            flag = listCountryTemp[b].flag
+                                            if (countryName.isNullOrEmpty()) {
+                                                countryName = listCountryTemp[b].name
+                                                flag = listCountryTemp[b].flag
+                                            } else {
+                                                countryName += "\n" + listCountryTemp[b].name
+                                                flag = "-"
+                                            }
                                             break
                                         }
                                     }
