@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.ysn.moncy.view.submenu.live.CurrencyNowActivity"></activity>
+        <activity android:name=".view.submenu.live.CurrencyNowActivity" />
+        <activity android:name=".view.submenu.available.AvailableCurrencyActivity"></activity>
     </application>
 
 </manifest>
