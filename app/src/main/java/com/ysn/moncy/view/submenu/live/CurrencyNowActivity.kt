@@ -8,7 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
 import com.ysn.moncy.R
-import com.ysn.moncy.model.live.CurrencyNow
+import com.ysn.moncy.model.currency.live.CurrencyNow
 import com.ysn.moncy.view.main.adapter.AdapterCurrencyNow
 import kotlinx.android.synthetic.main.activity_currency_now.*
 import java.text.SimpleDateFormat

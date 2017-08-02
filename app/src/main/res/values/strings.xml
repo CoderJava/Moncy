@@ -14,8 +14,10 @@
     <string name="please_wait">Please wait</string>
     <string name="no_data_available">No Data Available</string>
     <string name="try_again">Try Again</string>
-    <string name="usd">USD</string>
+    <string name="idr">IDR</string>
     <string name="_10_000">10.000</string>
     <string name="indonesia">Indonesia</string>
     <string name="load_data_failed">Load Data Failed!</string>
+    <string name="asia">Asia</string>
+    <string name="image_view_country_map">image view country map</string>
 </resources>

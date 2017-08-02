@@ -1,22 +1,10 @@
 package com.ysn.moncy.view.submenu.live
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.PictureDrawable
-import android.net.Uri
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
-import com.bumptech.glide.GenericRequestBuilder
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.animation.GlideAnimation
-import com.bumptech.glide.request.target.BitmapImageViewTarget
-import com.bumptech.glide.request.target.SimpleTarget
-import com.caverock.androidsvg.SVG
 import com.ysn.moncy.BuildConfig
-import com.ysn.moncy.library.SvgLoader
 import com.ysn.moncy.model.country.Country
-import com.ysn.moncy.model.live.CurrencyNow
-import com.ysn.moncy.model.merge.MergeLive
+import com.ysn.moncy.model.currency.live.CurrencyNow
+import com.ysn.moncy.model.merge.live.MergeLive
 import com.ysn.moncy.network.ApiCountryService
 import com.ysn.moncy.network.ApiCurrencyService
 import com.ysn.moncy.network.NetworkClient
@@ -27,7 +15,6 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
-import java.io.InputStream
 
 /**
  * Created by root on 21/07/17.

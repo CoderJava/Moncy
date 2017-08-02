@@ -1,7 +1,7 @@
 package com.ysn.moncy.network
 
-import com.ysn.moncy.model.live.CurrencyNow
-import io.reactivex.Flowable
+import com.ysn.moncy.model.currency.available.AvailableCurrency
+import com.ysn.moncy.model.currency.live.CurrencyNow
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.http.GET
@@ -21,7 +21,7 @@ interface ApiCurrencyService {
     @GET("list")
     fun getAvailableCurrency(
             @Query("access_key") accessKey: String
-    ): Observable<ResponseBody>
+    ): Observable<AvailableCurrency>
 
     @GET("historical")
     fun getHistoricalCurrencies(

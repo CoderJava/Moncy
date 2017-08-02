@@ -1,4 +1,4 @@
-package com.ysn.moncy.model.live
+package com.ysn.moncy.model.currency.live
 
 /**
  * Created by root on 23/07/17.

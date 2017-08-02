@@ -1,4 +1,4 @@
-package com.ysn.moncy.model.merge
+package com.ysn.moncy.model.merge.live
 
 import android.graphics.Bitmap
 
