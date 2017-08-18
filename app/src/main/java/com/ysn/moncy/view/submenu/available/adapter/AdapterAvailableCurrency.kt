@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.ysn.moncy.R
-import com.ysn.moncy.library.SvgLoader
+import com.ysn.moncy.library.svgloader.SvgLoader
 import com.ysn.moncy.model.merge.available.MergeAvailable
 import kotlinx.android.synthetic.main.item_available_currency.view.*
 

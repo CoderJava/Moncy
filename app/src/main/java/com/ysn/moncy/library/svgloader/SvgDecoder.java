@@ -1,4 +1,4 @@
-package com.ysn.moncy.library;
+package com.ysn.moncy.library.svgloader;
 
 import com.bumptech.glide.load.ResourceDecoder;
 import com.bumptech.glide.load.engine.Resource;

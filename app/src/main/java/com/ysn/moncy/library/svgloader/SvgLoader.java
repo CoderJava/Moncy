@@ -1,4 +1,4 @@
-package com.ysn.moncy.library;
+package com.ysn.moncy.library.svgloader;
 
 import android.content.Context;
 import android.graphics.drawable.PictureDrawable;
