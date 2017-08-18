@@ -9,6 +9,5 @@ data class MergeAvailable(
         var name: String,
         var codeCurrency: String,
         var region: String,
-        var flag: String,
-        var locationMap: Bitmap
+        var flag: String
 )

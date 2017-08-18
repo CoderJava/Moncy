@@ -10,7 +10,7 @@ import com.ysn.moncy.network.ApiCurrencyService
 import com.ysn.moncy.network.NetworkClient
 import com.ysn.moncy.view.base.mvp.MvpPresenter
 import com.ysn.moncy.view.base.mvp.MvpView
-import com.ysn.moncy.view.main.adapter.AdapterCurrencyNow
+import com.ysn.moncy.view.submenu.live.adapter.AdapterCurrencyNow
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
@@ -112,7 +112,7 @@ class CurrencyNowPresenter : MvpPresenter<CurrencyNowView> {
                             listMergeLive
                         }
                 )
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         {

@@ -54,6 +54,7 @@
         android:layout_below="@+id/text_view_country_region_item_available_currency"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:contentDescription="@string/image_view_country_map"
+        android:visibility="gone"
         />
 
 </RelativeLayout>

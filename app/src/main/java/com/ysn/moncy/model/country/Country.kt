@@ -5,7 +5,7 @@ package com.ysn.moncy.model.country
  */
 data class Country(
         var region: String? = null,
-        var latlng: List<LatLngCountry>? = null,
+        var latlng: List<Double>? = null,
         var flag: String,
         var name: String,
         var currencies: List<Currencies>

@@ -1,4 +1,4 @@
-package com.ysn.moncy.view.main.adapter
+package com.ysn.moncy.view.submenu.live.adapter
 
 import android.content.Context
 import android.net.Uri
@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.item_currency_now_body.view.*
 /**
  * Created by root on 21/07/17.
  */
-class AdapterCurrencyNow(context: Context, listMergeLive: ArrayList<MergeLive>) : RecyclerView.Adapter<AdapterCurrencyNow.ViewHolder>() {
+class AdapterCurrencyNow(context: Context, listMergeLive: ArrayList<MergeLive>)
+    : RecyclerView.Adapter<AdapterCurrencyNow.ViewHolder>() {
 
     private val TAG = javaClass.simpleName
     private var context: Context = context
