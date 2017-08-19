@@ -1,13 +1,17 @@
 package com.ysn.moncy.library.svgloader;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
+import android.widget.ImageView;
 
 import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.caverock.androidsvg.SVG;
 import com.ysn.moncy.R;
 
@@ -33,10 +37,10 @@ public class SvgLoader {
                 .as(SVG.class)
                 .transcode(new SvgDrawableTranscoder(), PictureDrawable.class)
                 .sourceEncoder(new StreamEncoder())
-                .cacheDecoder(new FileToStreamDecoder<SVG>(new SvgDecoder()))
+                .cacheDecoder(new FileToStreamDecoder<>(new SvgDecoder()))
                 .decoder(new SvgDecoder())
-                .placeholder(R.drawable.image_loading)
-                .error(R.drawable.image_error)
+                .placeholder(R.drawable.ic_image_black_24dp)
+                .error(R.drawable.ic_broken_image_black_24dp)
                 .animate(android.R.anim.fade_in)
                 .listener(new SvgSoftwareLayerSetter<Uri>());
         return requestBuilder;

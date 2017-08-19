@@ -42,8 +42,10 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         const val LIST_ITEM_LINES = 3
         const val CORNER_RADIUS = 2
         const val LINE_HEIGHT = 15
-        const val H_SPACING = 12
-        const val W_SPACING = 16
+        /*const val H_SPACING = 12*/
+        const val H_SPACING = 0
+        /*const val W_SPACING = 16*/
+        const val W_SPACING = 0
         const val IMAGE_SIZE = 50
         const val ANIMATION_DURATION = 1500L
     }
@@ -163,7 +165,8 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
 
         // Avatar
         val rectF = RectF(wSpacing, hSpacing, wSpacing + imageSize, hSpacing + imageSize)
-        canvas.drawOval(rectF, itemPaint)
+        /*canvas.drawOval(rectF, itemPaint)*/
+        canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, itemPaint)
 
         val textLeft = rectF.right + hSpacing
         val textRight = canvas.width - wSpacing
@@ -171,18 +174,18 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         // Title line
         val titleWidth = (textRight - textLeft) * 0.5F
         rectF.set(textLeft, hSpacing, textLeft + titleWidth, hSpacing + lineHeight)
-        canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, itemPaint)
+        /*canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, itemPaint)*/
 
         // Timestamp
         val timeWidth = (textRight - textLeft) * 0.2F
         rectF.set(textRight - timeWidth, hSpacing, textRight, hSpacing + lineHeight)
-        canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, itemPaint)
+        /*canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, itemPaint)*/
 
         // Text lines
         for (a in 0 until LIST_ITEM_LINES - 1) {
             val lineTop = rectF.bottom + hSpacing
             rectF.set(textLeft, lineTop, textRight, lineTop + lineHeight)
-            canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, itemPaint)
+            /*canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, itemPaint)*/
         }
         return item
     }

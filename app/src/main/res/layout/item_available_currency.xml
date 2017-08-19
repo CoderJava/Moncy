@@ -9,14 +9,21 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     >
 
+    <com.ysn.moncy.library.shimmerview.ShimmerView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/shimmer_view_country_flag_item_available_currency"
+        android:visibility="gone"
+        />
+
     <ImageView
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:id="@+id/image_view_country_flag_item_available_currency"
         android:contentDescription="@string/image_view_icon_country"
-        android:src="@drawable/image_loading"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin" />
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        />
 
     <TextView
         android:layout_width="wrap_content"
