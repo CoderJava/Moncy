@@ -1,5 +1,1 @@
 Ini adalah file testing
-Ini development lagi dikerjakan
-Ini development fitur 1 sudah OK
-Ini development fitur 2 masih dalam tahap pengerjaan
-Ini development fitur 2 sudah OK
