@@ -20,4 +20,9 @@
     <string name="load_data_failed">Load Data Failed!</string>
     <string name="asia">Asia</string>
     <string name="image_view_country_map">image view country map</string>
+    <string name="image_view_icon_date">image view icon date</string>
+    <string name="date">Date</string>
+    <string name="value">value</string>
+    <string name="submit">Submit</string>
+    <string name="change">Change</string>
 </resources>

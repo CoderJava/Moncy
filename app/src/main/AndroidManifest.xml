@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.submenu.live.CurrencyNowActivity" />
-        <activity android:name=".view.submenu.available.AvailableCurrencyActivity"></activity>
+        <activity android:name=".view.submenu.available.AvailableCurrencyActivity" />
+        <activity android:name=".view.submenu.historical.date.HistoricalDateActivity"></activity>
     </application>
 
 </manifest>

@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
 import com.ysn.moncy.R
+import com.ysn.moncy.R.id.relative_layout_container_activity_currency_now
+import com.ysn.moncy.R.id.relative_layout_container_refresh_activity_currency_now
 import com.ysn.moncy.model.currency.live.CurrencyNow
 import com.ysn.moncy.view.submenu.live.adapter.AdapterCurrencyNow
 import kotlinx.android.synthetic.main.activity_currency_now.*
@@ -62,16 +64,15 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                return true
-            }
-            else -> {
-                return super.onOptionsItemSelected(item)
-            }
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        android.R.id.home -> {
+            onBackPressed()
+            true
         }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
+
     }
 
 

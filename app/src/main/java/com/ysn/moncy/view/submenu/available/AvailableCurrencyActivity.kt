@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.ysn.moncy.R
@@ -26,6 +27,21 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         initToolbar()
         initListener()
         doLoadData()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        onDetachView()
     }
 
     private fun doLoadData() {
