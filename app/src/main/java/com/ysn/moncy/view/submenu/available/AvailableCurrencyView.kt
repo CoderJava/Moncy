@@ -8,8 +8,8 @@ import com.ysn.moncy.view.submenu.available.adapter.AdapterAvailableCurrency
  */
 interface AvailableCurrencyView : MvpView {
 
-    fun loadDataFailed(refresh: Boolean)
+    fun loadDataFailed(isRefresh: Boolean)
 
-    fun  loadData(adapterAvailableCurrency: AdapterAvailableCurrency, refresh: Boolean)
+    fun  loadData(adapterAvailableCurrency: AdapterAvailableCurrency, isRefresh: Boolean)
 
 }

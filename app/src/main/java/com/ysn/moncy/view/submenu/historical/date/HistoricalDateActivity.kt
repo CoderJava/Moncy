@@ -1,20 +1,26 @@
 package com.ysn.moncy.view.submenu.historical.date
 
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 
 import com.ysn.moncy.R
+import com.ysn.moncy.model.merge.live.MergeHistorical
 import kotlinx.android.synthetic.main.activity_historical_date.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnClickListener {
 
     private val TAG = javaClass.simpleName
     private var historicalDatePresenter: HistoricalDatePresenter? = null
+    private lateinit var progressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,11 +97,41 @@ class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnC
                 ).show()
             }
             button_submit_activity_historical_date.id -> {
-                // todo: do something
+                initProgressDialog()
+                val dateHistory = text_view_value_date_activity_historical_date
+                        .text
+                        .toString()
+                        .let {
+                            it.substring(6, it.length) + "-" +
+                                    it.substring(3, 5) + "-" +
+                                    it.substring(0, 2)
+                        }
+                historicalDatePresenter?.onSubmit(this, dateHistory)
             }
             else -> {
                 /** nothing to do in here */
             }
         }
+    }
+
+    private fun initProgressDialog() {
+        progressDialog = ProgressDialog(this)
+        progressDialog.setMessage(getString(R.string.please_wait))
+        progressDialog.setCancelable(false)
+        progressDialog.show()
+    }
+
+    override fun submit(listMergeHistorical: ArrayList<MergeHistorical>) {
+        progressDialog.dismiss()
+        Log.d(TAG, "listMergeHistorical: " + listMergeHistorical)
+    }
+
+    override fun submitFailed() {
+        progressDialog.dismiss()
+        Snackbar.make(
+                findViewById(android.R.id.content),
+                getString(R.string.load_data_failed),
+                Snackbar.LENGTH_LONG
+        ).show()
     }
 }

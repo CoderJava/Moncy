@@ -24,10 +24,6 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         init()
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs) {
-        init()
-    }
-
     companion object {
         const val EDGE_ALPHA = 12
         const val SHADER_COLOR_R = 170

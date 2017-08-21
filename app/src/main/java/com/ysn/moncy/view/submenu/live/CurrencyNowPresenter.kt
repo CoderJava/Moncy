@@ -82,7 +82,7 @@ class CurrencyNowPresenter : MvpPresenter<CurrencyNowView> {
                                 val valueQuote = listQuotesValues[a]
                                 var countryName: String? = null
                                 var flag: String? = null
-                                for (b in 0 until listCountryTemp.size) {
+                                (0 until listCountryTemp.size).forEach { b ->
                                     for (currency in listCountryTemp[b].currencies) {
                                         val code = currency.code
                                         if (code == codeQuote) {

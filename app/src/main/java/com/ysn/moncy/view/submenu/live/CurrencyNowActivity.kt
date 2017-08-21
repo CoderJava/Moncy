@@ -137,8 +137,11 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
     }
 
     private fun showSnackbarFailed() {
-        Snackbar.make(findViewById(android.R.id.content), getString(R.string.load_data_failed), Snackbar.LENGTH_LONG)
-                .show()
+        Snackbar.make(
+                findViewById(android.R.id.content),
+                getString(R.string.load_data_failed),
+                Snackbar.LENGTH_LONG
+        ).show()
     }
 
 }

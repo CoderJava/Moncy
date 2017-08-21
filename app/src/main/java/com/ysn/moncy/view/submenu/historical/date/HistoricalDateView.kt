@@ -1,10 +1,15 @@
 package com.ysn.moncy.view.submenu.historical.date
 
+import com.ysn.moncy.model.merge.live.MergeHistorical
 import com.ysn.moncy.view.base.mvp.MvpView
 
 /**
  * Created by root on 20/08/17.
  */
 interface HistoricalDateView : MvpView {
+
+    fun submit(listMergeHistorical: ArrayList<MergeHistorical>)
+
+    fun submitFailed()
 
 }
