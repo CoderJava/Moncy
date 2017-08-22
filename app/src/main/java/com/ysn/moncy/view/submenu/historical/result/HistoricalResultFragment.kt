@@ -6,8 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import com.ysn.moncy.production.R
+import com.ysn.moncy.R
 
 
 /**
@@ -22,4 +21,4 @@ class HistoricalResultFragment : Fragment() {
         return inflater!!.inflate(R.layout.fragment_historical_result, container, false)
     }
 
-}// Required empty public constructor
+}

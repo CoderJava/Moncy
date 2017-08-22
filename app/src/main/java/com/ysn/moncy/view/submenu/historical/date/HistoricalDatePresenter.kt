@@ -39,7 +39,7 @@ class HistoricalDatePresenter : MvpPresenter<HistoricalDateView> {
         this.context = context
 
         /** prepate data history currency */
-        var historical: Historical? = null
+        var historical: Historical?
         val apiCurrency = NetworkClient.RetrofitCurrency
                 .getRetrofitCurrency()
                 ?.create(ApiCurrencyService::class.java)

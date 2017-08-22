@@ -2,19 +2,18 @@ package com.ysn.moncy.view.submenu.historical.date
 
 import android.app.DatePickerDialog
 import android.app.ProgressDialog
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.util.Log
+import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
-
 import com.ysn.moncy.R
 import com.ysn.moncy.model.merge.live.MergeHistorical
+import com.ysn.moncy.view.submenu.historical.result.HistoricalResultFragment
 import kotlinx.android.synthetic.main.activity_historical_date.*
+import org.greenrobot.eventbus.EventBus
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnClickListener {
 
@@ -122,8 +121,24 @@ class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnC
     }
 
     override fun submit(listMergeHistorical: ArrayList<MergeHistorical>) {
+        supportFragmentManager
+                .beginTransaction()
+                ?.setCustomAnimations(
+                        R.anim.slide_in_from_bottom_to_top,
+                        R.anim.slide_out_from_bottom_to_top,
+                        R.anim.slide_in_from_top_to_bottom,
+                        R.anim.slide_out_from_top_to_bottom
+                )
+                ?.add(
+                        R.id.frame_layout_container_activity_historical_date,
+                        HistoricalResultFragment(),
+                        HistoricalResultFragment::class.java.simpleName
+                )
+                ?.addToBackStack(null)
+                ?.commit()
         progressDialog.dismiss()
-        Log.d(TAG, "listMergeHistorical: " + listMergeHistorical)
+        EventBus.getDefault().postSticky(listMergeHistorical)
+
     }
 
     override fun submitFailed() {
