@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="Source"
+                    android:text="@string/source"
                     android:textColor="@android:color/darker_gray" />
 
                 <TextView
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_view_label_source_activity_currency_now"
                     android:layout_centerHorizontal="true"
-                    android:text="USD"
+                    android:text="@string/usd"
                     android:textSize="28sp" />
 
                 <TextView
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_view_value_source_activity_currency_now"
                     android:layout_centerHorizontal="true"
-                    android:text="16-Juli-2017 11:04"
+                    android:text="@string/_16_juli_2017_11_04"
                     android:textStyle="italic" />
 
                 <View

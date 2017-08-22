@@ -15,12 +15,10 @@ import kotlinx.android.synthetic.main.item_currency_now_body.view.*
 /**
  * Created by root on 21/07/17.
  */
-class AdapterCurrencyNow(context: Context, listMergeLive: ArrayList<MergeLive>)
+class AdapterCurrencyNow(private var context: Context, private var listMergeLive: ArrayList<MergeLive>)
     : RecyclerView.Adapter<AdapterCurrencyNow.ViewHolder>() {
 
     private val TAG = javaClass.simpleName
-    private var context: Context = context
-    private var listMergeLive = listMergeLive
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view: View
@@ -57,21 +55,6 @@ class AdapterCurrencyNow(context: Context, listMergeLive: ArrayList<MergeLive>)
                 val viewHolderCurrencyNowBody = holder as ViewHolderCurrencyNowBody
 
                 /** load image */
-                /*Glide.with(context)
-                        .load(listMergeLive[position].flag)
-                        .asBitmap()
-                        .centerCrop()
-                        .into(object: BitmapImageViewTarget(viewHolderCurrencyNowBody.itemView.image_view_flag_country_item_currency_now_body) {
-                            override fun setResource(resource: Bitmap?) {
-                                val bitmapRounded = RoundedBitmapDrawableFactory
-                                        .create(context.resources, resource)
-                                bitmapRounded.isCircular = true
-                                viewHolderCurrencyNowBody.itemView
-                                        .image_view_flag_country_item_currency_now_body
-                                        .setImageDrawable(bitmapRounded)
-                            }
-                        })*/
-
                 SvgLoader(context).load()
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .load(Uri.parse(listMergeLive[position].flag))
@@ -89,20 +72,18 @@ class AdapterCurrencyNow(context: Context, listMergeLive: ArrayList<MergeLive>)
         }
     }
 
-    override fun getItemCount(): Int {
-        return listMergeLive.size
-    }
+    override fun getItemCount(): Int = listMergeLive.size
 
     override fun getItemViewType(position: Int): Int {
-        if (position == 0) {
+        return if (position == 0) {
             /** header */
-            return 0
+            0
         } else if (position == listMergeLive.size - 1) {
             /** footer */
-            return 2
+            2
         } else {
             /** body */
-            return 1
+            1
         }
     }
 
