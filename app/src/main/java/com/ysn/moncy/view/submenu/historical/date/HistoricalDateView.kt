@@ -8,7 +8,7 @@ import com.ysn.moncy.view.base.mvp.MvpView
  */
 interface HistoricalDateView : MvpView {
 
-    fun submit(listMergeHistorical: ArrayList<MergeHistorical>)
+    fun submit(strSourceHistorical: String, strDateHistorical: String, listMergeHistorical: ArrayList<MergeHistorical>)
 
     fun submitFailed()
 

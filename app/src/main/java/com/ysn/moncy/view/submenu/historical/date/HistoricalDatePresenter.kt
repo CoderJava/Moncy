@@ -26,6 +26,9 @@ class HistoricalDatePresenter : MvpPresenter<HistoricalDateView> {
     private lateinit var listQuotesLabels: ArrayList<String>
     private lateinit var listQuotesValues: ArrayList<String>
     private lateinit var listMergeHistorical: ArrayList<MergeHistorical>
+    private lateinit var mapMergeHistorical: HashMap<String, Any>
+    private lateinit var strDateHistorical: String
+    private lateinit var strSourceHistorical: String
 
     override fun onAttach(mvpView: MvpView) {
         historicalDateView = mvpView as HistoricalDateView
@@ -61,10 +64,10 @@ class HistoricalDatePresenter : MvpPresenter<HistoricalDateView> {
                 .combineLatest(
                         observableHistoryCurrency,
                         observableCountry,
-                        BiFunction<Historical, List<Country>, List<MergeHistorical>> { p0, p1 ->
+                        BiFunction<Historical, List<Country>, Map<String, Any>> { p0, p1 ->
                             historical = p0
-                            listQuotesValues = ArrayList<String>()
-                            listQuotesLabels = ArrayList<String>()
+                            listQuotesValues = ArrayList()
+                            listQuotesLabels = ArrayList()
                             val mapQuotes = historical?.quotes
                             val keys = mapQuotes?.keys?.iterator()
                             val source = historical?.source
@@ -77,7 +80,8 @@ class HistoricalDatePresenter : MvpPresenter<HistoricalDateView> {
                             }
                             val listCountryTemp = p1 as ArrayList<Country>
 
-                            listMergeHistorical = ArrayList<MergeHistorical>()
+                            mapMergeHistorical = HashMap()
+                            listMergeHistorical = ArrayList()
                             for (a in 0 until listQuotesLabels.size) {
                                 val codeQuote = listQuotesLabels[a]
                                 val valueQuote = listQuotesValues[a]
@@ -110,16 +114,21 @@ class HistoricalDatePresenter : MvpPresenter<HistoricalDateView> {
                                     )
                                 }
                             }
+                            mapMergeHistorical.put("source", historical!!.source)
+                            mapMergeHistorical.put("date", historical!!.date)
+                            mapMergeHistorical.put("listMergeHistorical", listMergeHistorical)
 
-                            listMergeHistorical
+                            mapMergeHistorical
                         }
                 )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        {
-                            data: List<MergeHistorical> ->
-                            listMergeHistorical = data as ArrayList<MergeHistorical>
+                        { data: Map<String, Any> ->
+                            strSourceHistorical = data["source"] as String
+                            strDateHistorical = data["date"] as String
+                            listMergeHistorical = data["listMergeHistorical"] as ArrayList<MergeHistorical>
+                            /*listMergeHistorical = data as ArrayList<MergeHistorical>*/
                         },
                         {
                             t: Throwable ->
@@ -127,7 +136,11 @@ class HistoricalDatePresenter : MvpPresenter<HistoricalDateView> {
                             historicalDateView?.submitFailed()
                         },
                         {
-                            historicalDateView?.submit(listMergeHistorical)
+                            historicalDateView?.submit(
+                                    strSourceHistorical,
+                                    strDateHistorical,
+                                    listMergeHistorical
+                            )
                         }
                 )
     }

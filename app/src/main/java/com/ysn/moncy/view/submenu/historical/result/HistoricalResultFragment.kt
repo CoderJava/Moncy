@@ -34,6 +34,8 @@ class HistoricalResultFragment : Fragment(), HistoricalResultView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        text_view_value_source_fragment_historical_result.text = arguments.getString("source")
+        text_view_timestamp_fragment_historical_result.text = arguments.getString("date")
         EventBus.getDefault().register(this)
     }
 

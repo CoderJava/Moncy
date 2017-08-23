@@ -120,7 +120,12 @@ class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnC
         progressDialog.show()
     }
 
-    override fun submit(listMergeHistorical: ArrayList<MergeHistorical>) {
+    override fun submit(strSourceHistorical: String, strDateHistorical: String, listMergeHistorical: ArrayList<MergeHistorical>) {
+        val historicalResultFragment = HistoricalResultFragment()
+        val bundle = Bundle()
+        bundle.putString("source", strSourceHistorical)
+        bundle.putString("date", strDateHistorical)
+        historicalResultFragment.arguments = bundle
         supportFragmentManager
                 .beginTransaction()
                 ?.setCustomAnimations(
@@ -131,7 +136,7 @@ class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnC
                 )
                 ?.add(
                         R.id.frame_layout_container_activity_historical_date,
-                        HistoricalResultFragment(),
+                        historicalResultFragment,
                         HistoricalResultFragment::class.java.simpleName
                 )
                 ?.addToBackStack(null)
