@@ -4,7 +4,7 @@ import android.content.Context
 import com.ysn.moncy.BuildConfig
 import com.ysn.moncy.model.country.Country
 import com.ysn.moncy.model.currency.historical.Historical
-import com.ysn.moncy.model.merge.live.MergeHistorical
+import com.ysn.moncy.model.merge.historical.MergeHistorical
 import com.ysn.moncy.network.ApiCountryService
 import com.ysn.moncy.network.ApiCurrencyService
 import com.ysn.moncy.network.NetworkClient

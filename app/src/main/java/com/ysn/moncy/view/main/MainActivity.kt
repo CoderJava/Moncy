@@ -7,6 +7,7 @@ import android.view.View
 
 import com.ysn.moncy.R
 import com.ysn.moncy.view.submenu.available.AvailableCurrencyActivity
+import com.ysn.moncy.view.submenu.convert.ConvertCurrencyActivity
 import com.ysn.moncy.view.submenu.historical.date.HistoricalDateActivity
 import com.ysn.moncy.view.submenu.live.CurrencyNowActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -54,11 +55,10 @@ class MainActivity : AppCompatActivity(), MainView, View.OnClickListener {
                 startActivity(Intent(this, AvailableCurrencyActivity::class.java))
             }
             R.id.relative_layout_item_menu_historical_currency_activity_main -> {
-                // todo: start intent to HistoricalCurrency
                 startActivity(Intent(this, HistoricalDateActivity::class.java))
             }
             R.id.relative_layout_item_menu_convert_currency_activity_main -> {
-                // todo: start intent to ConvertCurrency
+                startActivity(Intent(this, ConvertCurrencyActivity::class.java))
             }
             R.id.relative_layout_item_menu_data_offline_activity_main -> {
                 // todo: start intent to DataOffline

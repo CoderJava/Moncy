@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.ysn.moncy.R
 import com.ysn.moncy.library.svgloader.SvgLoader
-import com.ysn.moncy.model.merge.live.MergeHistorical
+import com.ysn.moncy.model.merge.historical.MergeHistorical
 import kotlinx.android.synthetic.main.item_historical_result_body.view.*
 
 /**

@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import com.ysn.moncy.R
-import com.ysn.moncy.model.merge.live.MergeHistorical
+import com.ysn.moncy.model.merge.historical.MergeHistorical
 import com.ysn.moncy.view.submenu.historical.result.HistoricalResultFragment
 import kotlinx.android.synthetic.main.activity_historical_date.*
 import org.greenrobot.eventbus.EventBus

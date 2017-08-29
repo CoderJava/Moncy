@@ -111,8 +111,11 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
     }
 
     private fun showSnackbarFailed() {
-        Snackbar.make(findViewById(android.R.id.content), R.string.load_data_failed, Snackbar.LENGTH_LONG)
-                .show()
+        Snackbar.make(
+                findViewById(android.R.id.content),
+                R.string.load_data_failed,
+                Snackbar.LENGTH_LONG
+        ).show()
     }
 
     override fun loadData(adapterAvailableCurrency: AdapterAvailableCurrency, isRefresh: Boolean) {

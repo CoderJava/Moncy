@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ysn.moncy.R
-import com.ysn.moncy.model.merge.live.MergeHistorical
+import com.ysn.moncy.model.merge.historical.MergeHistorical
 import com.ysn.moncy.view.submenu.historical.result.adapter.AdapterHistoricalResult
 import kotlinx.android.synthetic.main.fragment_historical_result.*
 import org.greenrobot.eventbus.EventBus
@@ -59,7 +59,7 @@ class HistoricalResultFragment : Fragment(), HistoricalResultView {
     }
 
     override fun loadData(adapterHistoricalResult: AdapterHistoricalResult) {
-        recycler_view_data_fragment_historical_result.layoutManager = LinearLayoutManager(activity)
+        recycler_view_data_fragment_historical_result.layoutManager = LinearLayoutManager(activity!!)
         recycler_view_data_fragment_historical_result.adapter = adapterHistoricalResult
     }
 }

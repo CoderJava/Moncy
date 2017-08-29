@@ -1,6 +1,6 @@
 package com.ysn.moncy.view.submenu.historical.date
 
-import com.ysn.moncy.model.merge.live.MergeHistorical
+import com.ysn.moncy.model.merge.historical.MergeHistorical
 import com.ysn.moncy.view.base.mvp.MvpView
 
 /**

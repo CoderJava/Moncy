@@ -30,10 +30,4 @@ interface ApiCurrencyService {
             @Query("date") date: String
     ): Observable<Historical>
 
-    @GET("live")
-    fun getSpecifyOutputCurrencies(
-            @Query("access_key") accessKey: String,
-            @Query("currencies") currencies: String
-    ): Observable<ResponseBody>
-
 }

@@ -29,6 +29,24 @@ object NetworkClient {
         }
     }
 
+    object RetrofitFixer {
+        private var retrofitCurrency: Retrofit? = null
+
+        fun getRetrofitCurrency(): Retrofit? {
+            if (retrofitCurrency == null) {
+                val builder = OkHttpClient.Builder()
+                val okHttpClient = builder.build()
+                retrofitCurrency = Retrofit.Builder()
+                        .baseUrl(BuildConfig.BASE_URL_FIXER)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                        .client(okHttpClient)
+                        .build()
+            }
+            return retrofitCurrency
+        }
+    }
+
     object RetrofitCountry {
         private var retrofitCountry: Retrofit? = null
 

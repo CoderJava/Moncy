@@ -2,7 +2,7 @@ package com.ysn.moncy.view.submenu.historical.result
 
 import android.content.Context
 import android.util.Log
-import com.ysn.moncy.model.merge.live.MergeHistorical
+import com.ysn.moncy.model.merge.historical.MergeHistorical
 import com.ysn.moncy.view.base.mvp.MvpPresenter
 import com.ysn.moncy.view.base.mvp.MvpView
 import com.ysn.moncy.view.submenu.historical.result.adapter.AdapterHistoricalResult
