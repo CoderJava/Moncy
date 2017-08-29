@@ -17,6 +17,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     private val TAG = javaClass.simpleName
     private var convertCurrencyPresenter: ConvertCurrencyPresenter? = null
     private lateinit var progressDialog: ProgressDialog
+    private lateinit var listMergeConvertCurrency: List<MergeConvertCurrency>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +56,8 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.text_view_value_source_code_currency_activity_convert_currency, R.id.image_view_icon_drop_down_value_source_currency_activity_convert_currency -> {
+            R.id.text_view_value_source_code_currency_activity_convert_currency,
+            R.id.image_view_icon_drop_down_value_source_currency_activity_convert_currency -> {
                 // todo: do something in here
             }
             R.id.text_view_value_to_code_currency_activity_convert_currency,
@@ -143,7 +145,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
         android.R.id.home -> {
             onBackPressed()
-            true;
+            true
         }
         else -> {
             super.onOptionsItemSelected(item)
@@ -151,7 +153,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     }
 
     override fun loadData(listMergeConvertCurrency: List<MergeConvertCurrency>) {
-        // todo: do something in here
+        this.listMergeConvertCurrency = listMergeConvertCurrency
         Log.d(TAG, "listMergeConvertCurrency: $listMergeConvertCurrency")
         setProgressViewDone()
         linear_layout_container_content_activity_convert_currency.visibility = View.VISIBLE
@@ -159,7 +161,6 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     }
 
     override fun loadDataFailed() {
-        // todo: do something in here
         showSnackbarFailed()
         setProgressViewDone()
         linear_layout_container_content_activity_convert_currency.visibility = View.GONE
