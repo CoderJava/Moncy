@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="8dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:id="@+id/relative_layout_container_item_data_choose_convert_currency"
+    >
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/image_view_country_flag_item_data_choose_convert_currency"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:contentDescription="@string/image_view_icon_country"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_view_currency_code_item_data_choose_convert_currency"
+        android:layout_centerVertical="true"
+        android:text="@string/currency_code"
+        android:textSize="20sp"
+        android:layout_toRightOf="@+id/image_view_country_flag_item_data_choose_convert_currency"
+        />
+
+</RelativeLayout>

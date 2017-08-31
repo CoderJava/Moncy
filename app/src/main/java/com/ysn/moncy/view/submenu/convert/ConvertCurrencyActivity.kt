@@ -10,7 +10,9 @@ import android.view.View
 
 import com.ysn.moncy.R
 import com.ysn.moncy.model.merge.convert.MergeConvertCurrency
+import com.ysn.moncy.view.submenu.convert.choosecurrency.ChooseConvertCurrency
 import kotlinx.android.synthetic.main.activity_convert_currency.*
+import org.greenrobot.eventbus.EventBus
 
 class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.OnClickListener {
 
@@ -59,10 +61,21 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
             R.id.text_view_value_source_code_currency_activity_convert_currency,
             R.id.image_view_icon_drop_down_value_source_currency_activity_convert_currency -> {
                 // todo: do something in here
+                val chooseConvertCurrencyBottomSheetDialogFragment = ChooseConvertCurrency()
+                chooseConvertCurrencyBottomSheetDialogFragment.show(
+                        supportFragmentManager,
+                        chooseConvertCurrencyBottomSheetDialogFragment.tag
+                )
+                EventBus.getDefault().postSticky(listMergeConvertCurrency)
             }
             R.id.text_view_value_to_code_currency_activity_convert_currency,
             R.id.image_view_icon_drop_down_value_to_currency_activity_convert_currency -> {
                 // todo: do something in here
+                val chooseConvertCurrencyBottomSheetDialogFragment = ChooseConvertCurrency()
+                chooseConvertCurrencyBottomSheetDialogFragment.show(
+                        supportFragmentManager,
+                        chooseConvertCurrencyBottomSheetDialogFragment.tag
+                )
             }
             R.id.button_try_again_activity_convert_currency -> {
                 doLoadData()
