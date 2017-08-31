@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.item_data_choose_convert_currency.view.*
 /**
  * Created by root on 31/08/17.
  */
-class AdapterChooseConvertCurrency(val context: Context, val listMergeConvertCurrency: List<MergeConvertCurrency>) :
+class AdapterChooseConvertCurrency(val context: Context, val listMergeConvertCurrency: List<MergeConvertCurrency>
+                                   , val listenerViewHolderChooseConvertCurrency: ListenerViewHolderChooseConvertCurrency) :
         RecyclerView.Adapter<AdapterChooseConvertCurrency.ViewHolderChooseConvertCurrency>() {
 
     private val TAG = javaClass.simpleName
@@ -36,7 +37,13 @@ class AdapterChooseConvertCurrency(val context: Context, val listMergeConvertCur
 
     override fun getItemCount(): Int = listMergeConvertCurrency.size
 
-    inner class ViewHolderChooseConvertCurrency(itemView: View?) : RecyclerView.ViewHolder(itemView)
+    inner class ViewHolderChooseConvertCurrency(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView?.setOnClickListener {
+                listenerViewHolderChooseConvertCurrency.onClick(listMergeConvertCurrency[adapterPosition])
+            }
+        }
+    }
 
     interface ListenerViewHolderChooseConvertCurrency {
 

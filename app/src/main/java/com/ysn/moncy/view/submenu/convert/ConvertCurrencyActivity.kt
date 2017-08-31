@@ -1,18 +1,22 @@
 package com.ysn.moncy.view.submenu.convert
 
 import android.app.ProgressDialog
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 import com.ysn.moncy.R
+import com.ysn.moncy.library.svgloader.SvgLoader
 import com.ysn.moncy.model.merge.convert.MergeConvertCurrency
-import com.ysn.moncy.view.submenu.convert.choosecurrency.ChooseConvertCurrency
+import com.ysn.moncy.view.submenu.convert.choosecurrency.ChooseConvertCurrencyBottomSheetDialogFragment
 import kotlinx.android.synthetic.main.activity_convert_currency.*
 import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
 class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.OnClickListener {
 
@@ -26,6 +30,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         setContentView(R.layout.activity_convert_currency)
         initPresenter()
         onAttachView()
+        EventBus.getDefault().register(this)
         initToolbar()
         initListener()
         doLoadData()
@@ -60,22 +65,21 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         when (view?.id) {
             R.id.text_view_value_source_code_currency_activity_convert_currency,
             R.id.image_view_icon_drop_down_value_source_currency_activity_convert_currency -> {
-                // todo: do something in here
-                val chooseConvertCurrencyBottomSheetDialogFragment = ChooseConvertCurrency()
+                val chooseConvertCurrencyBottomSheetDialogFragment = ChooseConvertCurrencyBottomSheetDialogFragment()
                 chooseConvertCurrencyBottomSheetDialogFragment.show(
                         supportFragmentManager,
-                        chooseConvertCurrencyBottomSheetDialogFragment.tag
+                        "valueSource"
                 )
                 EventBus.getDefault().postSticky(listMergeConvertCurrency)
             }
             R.id.text_view_value_to_code_currency_activity_convert_currency,
             R.id.image_view_icon_drop_down_value_to_currency_activity_convert_currency -> {
-                // todo: do something in here
-                val chooseConvertCurrencyBottomSheetDialogFragment = ChooseConvertCurrency()
+                val chooseConvertCurrencyBottomSheetDialogFragment = ChooseConvertCurrencyBottomSheetDialogFragment()
                 chooseConvertCurrencyBottomSheetDialogFragment.show(
                         supportFragmentManager,
-                        chooseConvertCurrencyBottomSheetDialogFragment.tag
+                        "toSource"
                 )
+                EventBus.getDefault().postSticky(listMergeConvertCurrency)
             }
             R.id.button_try_again_activity_convert_currency -> {
                 doLoadData()
@@ -190,5 +194,26 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
 
     private fun setProgressViewDone() {
         progressDialog.dismiss()
+    }
+
+    @Subscribe
+    fun onMessageEvent(mapData: Map<String, Any>) {
+        val fromView = mapData.get("fromView") as String
+        val mergeConvertCurrency = mapData.get("data") as MergeConvertCurrency
+        if (fromView == "valueSource") {
+            text_view_value_source_code_currency_activity_convert_currency.text = mergeConvertCurrency
+                    .currencyCode
+            SvgLoader(this).load()
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .load(Uri.parse(mergeConvertCurrency.flag))
+                    .into(image_view_source_country_activity_convert_currency)
+        } else {
+            text_view_value_to_code_currency_activity_convert_currency.text = mergeConvertCurrency
+                    .currencyCode
+            SvgLoader(this).load()
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .load(Uri.parse(mergeConvertCurrency.flag))
+                    .into(image_view_to_country_activity_convert_currency)
+        }
     }
 }

@@ -26,7 +26,12 @@ class ChooseConvertCurrencyPresenter : MvpPresenter<ChooseConvertCurrencyView> {
     fun onLoadData(context: Context, listMergeConvertCurrency: List<MergeConvertCurrency>) {
         val adapterChooseConvertCurrency = AdapterChooseConvertCurrency(
                 context = context,
-                listMergeConvertCurrency = listMergeConvertCurrency
+                listMergeConvertCurrency = listMergeConvertCurrency,
+                listenerViewHolderChooseConvertCurrency = object : AdapterChooseConvertCurrency.ListenerViewHolderChooseConvertCurrency {
+                    override fun onClick(mergeConvertCurrency: MergeConvertCurrency) {
+                        chooseConvertCurrencyView?.onClickItem(mergeConvertCurrency)
+                    }
+                }
         )
         chooseConvertCurrencyView?.loadData(adapterChooseConvertCurrency)
     }

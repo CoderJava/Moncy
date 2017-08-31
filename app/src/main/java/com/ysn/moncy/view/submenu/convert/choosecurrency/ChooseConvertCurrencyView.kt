@@ -1,5 +1,6 @@
 package com.ysn.moncy.view.submenu.convert.choosecurrency
 
+import com.ysn.moncy.model.merge.convert.MergeConvertCurrency
 import com.ysn.moncy.view.base.mvp.MvpView
 import com.ysn.moncy.view.submenu.convert.choosecurrency.adapter.AdapterChooseConvertCurrency
 
@@ -9,5 +10,7 @@ import com.ysn.moncy.view.submenu.convert.choosecurrency.adapter.AdapterChooseCo
 interface ChooseConvertCurrencyView : MvpView {
 
     fun loadData(adapterChooseConvertCurrency: AdapterChooseConvertCurrency)
+
+    fun onClickItem(mergeConvertCurrency: MergeConvertCurrency)
 
 }
