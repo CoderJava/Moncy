@@ -60,6 +60,8 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         button_keypad_8_activity_convert_currency.setOnClickListener(this)
         button_keypad_9_activity_convert_currency.setOnClickListener(this)
         button_keypad_dot_activity_convert_currency.setOnClickListener(this)
+        button_keypad_backspace_activity_convert_currency.setOnClickListener(this)
+        button_keypad_clear_activity_convert_currency.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -118,6 +120,12 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
             R.id.button_keypad_dot_activity_convert_currency -> {
                 updateSourceAmount(keypad = ".")
             }
+            R.id.button_keypad_backspace_activity_convert_currency -> {
+                updateSourceAmount(keypad = "x")
+            }
+            R.id.button_keypad_clear_activity_convert_currency -> {
+                updateSourceAmount(keypad = "clear")
+            }
             else -> {
                 /** nothing to do in here */
             }
@@ -126,10 +134,23 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
 
     private fun updateSourceAmount(keypad: String) {
         val sourceAmount = text_view_source_amount_activity_convert_currency.text.let {
-            if (it == "0") {
-                keypad
-            } else {
-                "$it$keypad"
+            when {
+                it == "0" && keypad != "x" && keypad != "clear" -> {
+                    keypad
+                }
+                keypad == "x" -> {
+                    if (it.length > 1) {
+                        it.substring(0, it.length - 1)
+                    } else {
+                        "0"
+                    }
+                }
+                keypad == "clear" -> {
+                    "0"
+                }
+                else -> {
+                    "$it$keypad"
+                }
             }
         }
         text_view_source_amount_activity_convert_currency.text = sourceAmount
