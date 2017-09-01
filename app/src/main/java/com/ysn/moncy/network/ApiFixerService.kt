@@ -20,4 +20,5 @@ interface ApiFixerService {
             @Query("symbols") symbols: String
     ): Observable<ConvertCurrency>
 
+
 }

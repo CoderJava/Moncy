@@ -2,7 +2,9 @@ package com.ysn.moncy.view.submenu.convert
 
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import com.ysn.moncy.model.country.Country
+import com.ysn.moncy.model.currency.convert.ConvertCurrency
 import com.ysn.moncy.model.currency.convert.CurrencyFixer
 import com.ysn.moncy.model.merge.convert.MergeConvertCurrency
 import com.ysn.moncy.network.ApiCountryService
@@ -57,8 +59,7 @@ class ConvertCurrencyPresenter : MvpPresenter<ConvertCurrencyView> {
                 combineLatest(
                         observableAvailableCurrency,
                         observableCountry,
-                        BiFunction<CurrencyFixer, List<Country>, List<MergeConvertCurrency>> {
-                            currencyFixer, listCountry ->
+                        BiFunction<CurrencyFixer, List<Country>, List<MergeConvertCurrency>> { currencyFixer, listCountry ->
                             val listMergeConvertCurrency = ArrayList<MergeConvertCurrency>()
 
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -109,12 +110,10 @@ class ConvertCurrencyPresenter : MvpPresenter<ConvertCurrencyView> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        {
-                            data: List<MergeConvertCurrency> ->
+                        { data: List<MergeConvertCurrency> ->
                             listMergeConvertCurrency = data
                         },
-                        {
-                            t: Throwable ->
+                        { t: Throwable ->
                             t.printStackTrace()
                             convertCurrencyView?.loadDataFailed()
                         },
@@ -124,5 +123,39 @@ class ConvertCurrencyPresenter : MvpPresenter<ConvertCurrencyView> {
                 )
 
     }
+
+    fun onLoadDataConverterCurrency(sourceCode: String, toCode: String) {
+        /** prepare data converter currency */
+        val apiCurrency = NetworkClient
+                .RetrofitFixer
+                .getRetrofitCurrency()
+                ?.create(ApiFixerService::class.java)
+
+        /** load data converter currency */
+        val observableConverterCurrency = apiCurrency?.getSpecifiedCurrency(
+                base = sourceCode,
+                symbols = toCode
+        )
+
+        observableConverterCurrency?.map { convertCurrency: ConvertCurrency ->
+            convertCurrency.rates[toCode] ?: -1.0
+        }
+                ?.subscribeOn(Schedulers.io())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(
+                        { valueConverterCurrency: Double ->
+                            Log.d(TAG, "valueConvertCurrency: $valueConverterCurrency")
+                            convertCurrencyView?.loadDataConverterCurrency(valueConverterCurrency)
+                        },
+                        { t: Throwable ->
+                            t.printStackTrace()
+                            convertCurrencyView?.loadDataConverterCurrencyFailed()
+                        }
+                )
+
+    }
+
+    fun doConvertCurrency(sourceAmount: Double, valueConverterCurrency: Double): Double =
+            sourceAmount * valueConverterCurrency
 
 }

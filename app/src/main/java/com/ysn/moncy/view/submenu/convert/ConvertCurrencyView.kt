@@ -12,4 +12,8 @@ interface ConvertCurrencyView : MvpView {
 
     fun loadDataFailed()
 
+    fun loadDataConverterCurrency(valueConverterCurrency: Double)
+
+    fun loadDataConverterCurrencyFailed()
+
 }

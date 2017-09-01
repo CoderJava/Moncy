@@ -24,6 +24,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     private var convertCurrencyPresenter: ConvertCurrencyPresenter? = null
     private lateinit var progressDialog: ProgressDialog
     private lateinit var listMergeConvertCurrency: List<MergeConvertCurrency>
+    private var valueCurrencyTo: Double? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,42 +86,53 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
                 doLoadData()
             }
             R.id.button_keypad_0_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = "0")
             }
             R.id.button_keypad_1_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = "1")
             }
             R.id.button_keypad_2_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = "2")
             }
             R.id.button_keypad_3_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = "3")
             }
             R.id.button_keypad_4_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = "4")
             }
             R.id.button_keypad_5_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = "5")
             }
             R.id.button_keypad_6_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = "6")
             }
             R.id.button_keypad_7_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = "7")
             }
             R.id.button_keypad_8_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = "8")
             }
             R.id.button_keypad_9_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = "9")
             }
             R.id.button_keypad_dot_activity_convert_currency -> {
-                // todo: do something in here
+                updateSourceAmount(keypad = ".")
             }
             else -> {
                 /** nothing to do in here */
             }
         }
+    }
+
+    private fun updateSourceAmount(keypad: String) {
+        val sourceAmount = text_view_source_amount_activity_convert_currency.text.let {
+            if (it == "0") {
+                keypad
+            } else {
+                "$it$keypad"
+            }
+        }
+        text_view_source_amount_activity_convert_currency.text = sourceAmount
     }
 
     private fun doLoadData() {
@@ -200,6 +212,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     fun onMessageEvent(mapData: Map<String, Any>) {
         val fromView = mapData.get("fromView") as String
         val mergeConvertCurrency = mapData.get("data") as MergeConvertCurrency
+        valueCurrencyTo = 0.0
         if (fromView == "valueSource") {
             text_view_value_source_code_currency_activity_convert_currency.text = mergeConvertCurrency
                     .currencyCode
@@ -207,6 +220,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .load(Uri.parse(mergeConvertCurrency.flag))
                     .into(image_view_source_country_activity_convert_currency)
+            doLoadDataConverterCurrency()
         } else {
             text_view_value_to_code_currency_activity_convert_currency.text = mergeConvertCurrency
                     .currencyCode
@@ -214,6 +228,38 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .load(Uri.parse(mergeConvertCurrency.flag))
                     .into(image_view_to_country_activity_convert_currency)
+            doLoadDataConverterCurrency()
         }
+    }
+
+    private fun doLoadDataConverterCurrency() {
+        progress_bar_loading_activty_convert_currency.visibility = View.VISIBLE
+        text_view_to_amount_activity_convert_currency.visibility = View.INVISIBLE
+        convertCurrencyPresenter?.onLoadDataConverterCurrency(
+                sourceCode = text_view_value_source_code_currency_activity_convert_currency
+                        .text
+                        .toString(),
+                toCode = text_view_value_to_code_currency_activity_convert_currency
+                        .text
+                        .toString()
+        )
+    }
+
+    override fun loadDataConverterCurrency(valueConverterCurrency: Double) {
+        progress_bar_loading_activty_convert_currency.visibility = View.GONE
+        text_view_to_amount_activity_convert_currency.visibility = View.VISIBLE
+        valueCurrencyTo = valueConverterCurrency
+        val sourceAmount = text_view_source_amount_activity_convert_currency.text
+                .toString()
+                .toDouble()
+        val toAmount = convertCurrencyPresenter?.doConvertCurrency(
+                sourceAmount = sourceAmount,
+                valueConverterCurrency = valueConverterCurrency
+        )
+        text_view_to_amount_activity_convert_currency.text = toAmount.toString()
+    }
+
+    override fun loadDataConverterCurrencyFailed() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
