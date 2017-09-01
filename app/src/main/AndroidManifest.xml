@@ -22,6 +22,7 @@
         <activity android:name=".view.submenu.available.AvailableCurrencyActivity" />
         <activity android:name=".view.submenu.historical.date.HistoricalDateActivity" />
         <activity android:name=".view.submenu.convert.ConvertCurrencyActivity" />
+        <activity android:name=".view.submenu.about.AboutActivity"></activity>
     </application>
 
 </manifest>

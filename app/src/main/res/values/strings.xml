@@ -46,4 +46,9 @@
     <string name="_9">9</string>
     <string name="ac">AC</string>
     <string name="_dot">.</string>
+    <string name="convert_currency_failed">Convert Currency Failed</string>
+    <string name="about">About</string>
+    <string name="banner">banner</string>
+    <string name="icon_app">icon app</string>
+    <string name="ysn_studio">YSN Studio</string>
 </resources>

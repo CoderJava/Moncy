@@ -24,7 +24,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     private var convertCurrencyPresenter: ConvertCurrencyPresenter? = null
     private lateinit var progressDialog: ProgressDialog
     private lateinit var listMergeConvertCurrency: List<MergeConvertCurrency>
-    private var valueCurrencyTo: Double? = null
+    private var valueCurrencyTo: Double? = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -154,6 +154,14 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
             }
         }
         text_view_source_amount_activity_convert_currency.text = sourceAmount
+        if (text_view_value_source_code_currency_activity_convert_currency.text == text_view_value_to_code_currency_activity_convert_currency.text) {
+            text_view_to_amount_activity_convert_currency.text = text_view_source_amount_activity_convert_currency.text
+        } else {
+            text_view_to_amount_activity_convert_currency.text = convertCurrencyPresenter?.doConvertCurrency(
+                    sourceAmount = sourceAmount.toDouble(),
+                    valueConverterCurrency = valueCurrencyTo!!
+            ).toString()
+        }
     }
 
     private fun doLoadData() {
@@ -208,6 +216,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         setProgressViewDone()
         linear_layout_container_content_activity_convert_currency.visibility = View.VISIBLE
         relative_layout_container_refresh_activity_convert_currency.visibility = View.GONE
+        doLoadDataConverterCurrency()
     }
 
     override fun loadDataFailed() {
@@ -215,12 +224,13 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         setProgressViewDone()
         linear_layout_container_content_activity_convert_currency.visibility = View.GONE
         relative_layout_container_refresh_activity_convert_currency.visibility = View.VISIBLE
+        doLoadDataConverterCurrency()
     }
 
-    private fun showSnackbarFailed() {
+    private fun showSnackbarFailed(message: String = getString(R.string.load_data_failed)) {
         Snackbar.make(
                 findViewById(android.R.id.content),
-                R.string.load_data_failed,
+                message,
                 Snackbar.LENGTH_LONG
         ).show()
     }
@@ -269,7 +279,6 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     override fun loadDataConverterCurrency(valueConverterCurrency: Double) {
         progress_bar_loading_activty_convert_currency.visibility = View.GONE
         text_view_to_amount_activity_convert_currency.visibility = View.VISIBLE
-        valueCurrencyTo = valueConverterCurrency
         val sourceAmount = text_view_source_amount_activity_convert_currency.text
                 .toString()
                 .toDouble()
@@ -281,6 +290,9 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     }
 
     override fun loadDataConverterCurrencyFailed() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progress_bar_loading_activty_convert_currency.visibility = View.GONE
+        text_view_to_amount_activity_convert_currency.visibility = View.VISIBLE
+        text_view_to_amount_activity_convert_currency.text = "0"
+        showSnackbarFailed(getString(R.string.convert_currency_failed))
     }
 }

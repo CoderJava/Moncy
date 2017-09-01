@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ysn.moncy.view.submenu.about.AboutActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/banner"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/banner"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#212121"
+        android:alpha="0.9"
+        />
+
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:id="@+id/image_view_icon_app_activity_about"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/icon_app"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_view_app_name_activity_about"
+        android:text="@string/app_name"
+        android:layout_below="@+id/image_view_icon_app_activity_about"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        android:fontFamily="sans-serif-condensed"
+        android:alpha="0.3"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_view_app_version_activity_about"
+        android:text="1.0.0"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/text_view_app_name_activity_about"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-condensed"
+        android:alpha="0.3"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Developer"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:layout_above="@+id/text_view_value_developer_activity_about"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_view_value_developer_activity_about"
+        android:text="@string/ysn_studio"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:alpha="0.8"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:fontFamily="sans-serif-smallcaps"
+        />
+
+</RelativeLayout>

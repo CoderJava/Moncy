@@ -138,7 +138,7 @@ class ConvertCurrencyPresenter : MvpPresenter<ConvertCurrencyView> {
         )
 
         observableConverterCurrency?.map { convertCurrency: ConvertCurrency ->
-            convertCurrency.rates[toCode] ?: -1.0
+            convertCurrency.rates[toCode] ?: 1.0
         }
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
