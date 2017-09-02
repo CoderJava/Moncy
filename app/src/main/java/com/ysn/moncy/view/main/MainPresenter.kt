@@ -11,10 +11,18 @@ class MainPresenter : MvpPresenter<MainView> {
     private val TAG = javaClass.simpleName
     private var mainView: MainView? = null
 
-    override fun onAttach(mvpView: MvpView) {
-        mainView = mvpView as MainView
+    /**
+     * On attach view
+     * @param mvpView
+     * Attach view MainView
+     */
+    override fun onAttach(mvpView: MainView) {
+        mainView = mvpView
     }
 
+    /**
+     * On detach view
+     */
     override fun onDetach() {
         mainView = null
     }

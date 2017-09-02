@@ -11,6 +11,7 @@ import java.io.InputStream;
 
 /**
  * Created by root on 02/08/17.
+ * Library SVG Decoder
  */
 
 public class SvgDecoder implements ResourceDecoder<InputStream, SVG> {

@@ -51,4 +51,5 @@
     <string name="banner">banner</string>
     <string name="icon_app">icon app</string>
     <string name="ysn_studio">YSN Studio</string>
+    <string name="internal_error">Internal error</string>
 </resources>

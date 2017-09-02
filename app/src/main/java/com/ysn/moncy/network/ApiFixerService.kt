@@ -8,12 +8,22 @@ import retrofit2.http.Query
 
 /**
  * Created by root on 23/08/17.
+ * API Fixer Service
  */
 interface ApiFixerService {
 
+    /**
+     * Get latest data currency from http://api.fixer.io/
+     */
     @GET("latest")
     fun getListCurrency(): Observable<CurrencyFixer>
 
+    /**
+     * @param base
+     * Base currency code
+     * @param symbols
+     * Destination currency code
+     */
     @GET("latest")
     fun getSpecifiedCurrency(
             @Query("base") base: String,

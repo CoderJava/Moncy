@@ -2,6 +2,7 @@ package com.ysn.moncy.model.currency.historical
 
 /**
  * Created by root on 20/08/17.
+ * Data Model Historical
  */
 data class Historical (
         var success: Boolean,

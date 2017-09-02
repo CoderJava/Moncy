@@ -10,6 +10,7 @@ import com.bumptech.glide.request.target.Target;
 
 /**
  * Created by root on 02/08/17.
+ * Library SVG Software Layer Setter
  */
 
 public class SvgSoftwareLayerSetter<T> implements RequestListener<T, PictureDrawable> {

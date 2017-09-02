@@ -2,6 +2,7 @@ package com.ysn.moncy.model.currency.live
 
 /**
  * Created by root on 23/07/17.
+ * Data Model Currency Now
  */
 data class CurrencyNow (
         var success: Boolean,

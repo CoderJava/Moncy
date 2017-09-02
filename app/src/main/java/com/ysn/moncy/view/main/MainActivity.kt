@@ -21,6 +21,10 @@ class MainActivity : AppCompatActivity(), MainView, View.OnClickListener {
     private val TAG = javaClass.simpleName
     private var mainPresenter: MainPresenter? = null
 
+    /**
+     * @param savedInstanceState
+     * Bundle savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,22 +34,37 @@ class MainActivity : AppCompatActivity(), MainView, View.OnClickListener {
         onAttachView()
     }
 
+    /**
+     * Initialize toolbar
+     */
     private fun initToolbar() {
         setSupportActionBar(toolbar_activity_main)
     }
 
+    /**
+     * Initialize Presenter
+     */
     private fun initPresenter() {
         mainPresenter = MainPresenter()
     }
 
+    /**
+     * On attach view
+     */
     override fun onAttachView() {
         mainPresenter?.onAttach(this)
     }
 
+    /**
+     * On detach view
+     */
     override fun onDetachView() {
         mainPresenter?.onDetach()
     }
 
+    /**
+     * Initialize listener for view UI
+     */
     private fun initListener() {
         relative_layout_item_menu_currency_now_activity_main.setOnClickListener(this)
         relative_layout_item_menu_list_currency_activity_main.setOnClickListener(this)
@@ -54,22 +73,29 @@ class MainActivity : AppCompatActivity(), MainView, View.OnClickListener {
         relative_layout_item_menu_data_offline_activity_main.setOnClickListener(this)
     }
 
+    /**
+     * On create options menu
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_activity_main, menu)
         return true
     }
 
+    /**
+     * On options item selected
+     */
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
         R.id.menu_item_about -> {
             startActivity(Intent(this, AboutActivity::class.java))
             true
         }
-        else -> {
-            super.onOptionsItemSelected(item)
+        else -> { super.onOptionsItemSelected(item)
         }
     }
 
-
+    /**
+     * Implements View.OnClickListener
+     */
     override fun onClick(view: View) {
         when (view.id) {
             R.id.relative_layout_item_menu_currency_now_activity_main -> {
@@ -93,6 +119,9 @@ class MainActivity : AppCompatActivity(), MainView, View.OnClickListener {
         }
     }
 
+    /**
+     * On destroy activity
+     */
     override fun onDestroy() {
         onDetachView()
         super.onDestroy()

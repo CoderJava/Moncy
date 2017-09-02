@@ -19,6 +19,7 @@ import java.io.InputStream;
 
 /**
  * Created by root on 02/08/17.
+ * Library SVG Loader
  */
 
 public class SvgLoader {

@@ -8,9 +8,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Created by root on 21/07/17.
+ * Network Client To Manage API Services
  */
 object NetworkClient {
 
+    /**
+     * Manage Retrofit Currency http://apilayer.net/api/
+     */
     object RetrofitCurrency {
         private var retrofitCurrency: Retrofit? = null
 
@@ -29,6 +33,9 @@ object NetworkClient {
         }
     }
 
+    /**
+     * Manage Retrofit Currency Fixer http://api.fixer.io/
+     */
     object RetrofitFixer {
         private var retrofitCurrency: Retrofit? = null
 
@@ -47,6 +54,9 @@ object NetworkClient {
         }
     }
 
+    /**
+     * Manage Retrofit Country https://restcountries.eu/rest/v2/
+     */
     object RetrofitCountry {
         private var retrofitCountry: Retrofit? = null
 

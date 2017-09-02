@@ -2,6 +2,7 @@ package com.ysn.moncy.model.currency.convert
 
 /**
  * Created by root on 26/08/17.
+ * Data Model Currency Fixer
  */
 
 data class CurrencyFixer (

@@ -10,6 +10,7 @@ import com.caverock.androidsvg.SVG;
 
 /**
  * Created by root on 02/08/17.
+ * Library SVG Drawable Transcoder
  */
 
 public class SvgDrawableTranscoder implements ResourceTranscoder<SVG, PictureDrawable> {

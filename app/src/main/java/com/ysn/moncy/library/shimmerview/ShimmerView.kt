@@ -13,13 +13,24 @@ import android.view.animation.LinearInterpolator
 
 /**
  * Created by root on 18/08/17.
+ * Used to make effect shimmer view
  */
 class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
 
+    /**
+     * @param context
+     * Context
+     */
     constructor(context: Context) : super(context) {
         init()
     }
 
+    /**
+     * @param context
+     * Context
+     * @param
+     * AttributeSet
+     */
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init()
     }
@@ -58,6 +69,9 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
     private var imageSize: Float = 0F
     private var cornerRadius: Float = 0F
 
+    /**
+     * Init constructor
+     */
     fun init() {
         val metric = context.resources.displayMetrics
         cornerRadius = dpToPixels(metric, CORNER_RADIUS)
@@ -79,6 +93,12 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         shaderColors = intArrayOf(EDGE_COLOR, CENTER_COLOR, EDGE_COLOR)
     }
 
+    /**
+     * @param changedView
+     * View
+     * @param visibility
+     * Visibility
+     */
     override fun onVisibilityChanged(changedView: View?, visibility: Int) {
         super.onVisibilityChanged(changedView, visibility)
         when (visibility) {
@@ -87,6 +107,10 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         }
     }
 
+    /**
+     * @param valueAnimator
+     * ValueAnimator
+     */
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onAnimationUpdate(valueAnimator: ValueAnimator) {
         if (isAttachedToWindow) {
@@ -96,6 +120,16 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         }
     }
 
+    /**
+     * @param w
+     * Width
+     * @param h
+     * Height
+     * @param oldw
+     * Old Width
+     * @param oldh
+     * Old Height
+     */
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         updateShader(width = w.toFloat())
@@ -107,6 +141,12 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         }
     }
 
+    /**
+     * @param width
+     * Width
+     * @param factor
+     * Factor with default value -1F
+     */
     private fun updateShader(width: Float, factor: Float = -1F) {
         val left = width * factor
         val shader = LinearGradient(
@@ -121,6 +161,10 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         shaderPaint?.shader = shader
     }
 
+    /**
+     * @param canvas
+     * Canvas
+     */
     override fun onDraw(canvas: Canvas) {
         canvas.drawColor(EDGE_COLOR)
         canvas.drawRect(
@@ -135,6 +179,12 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         }
     }
 
+    /**
+     * @param w
+     * Width item
+     * @param h
+     * Height item
+     */
     private fun drawListItems(w: Int, h: Int) {
         listItems = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(listItems)
@@ -147,6 +197,10 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         canvas.drawColor(ITEM_BG_COLOR, PorterDuff.Mode.SRC_IN)
     }
 
+    /**
+     * @param w
+     * Width bitmap
+     */
     private fun getItemBitmap(w: Int): Bitmap {
         val h = calculateListItemHeight(LIST_ITEM_LINES)
         val item = Bitmap.createBitmap(w, h, Bitmap.Config.ALPHA_8)
@@ -186,18 +240,34 @@ class ShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         return item
     }
 
-    private fun calculateListItemHeight(lines: Int): Int {
-        return ((lines * lineHeight) + (hSpacing * (lines + 1))).toInt()
-    }
+    /**
+     * @param lines
+     * Height item lines
+     */
+    private fun calculateListItemHeight(lines: Int): Int =
+            ((lines * lineHeight) + (hSpacing * (lines + 1))).toInt()
 
-    private fun dpToPixels(metrics: DisplayMetrics, dp: Int): Float {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), metrics)
-    }
+    /**
+     * @param metrics
+     * DisplayMetrics
+     * @param dp
+     * dp value
+     */
+    private fun dpToPixels(metrics: DisplayMetrics, dp: Int): Float =
+            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), metrics)
 
-    private fun spToPixels(metrics: DisplayMetrics, sp: Int): Float {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp.toFloat(), metrics)
-    }
+    /**
+     * @param metrics
+     * DisplayMetrics
+     * @param sp
+     * sp value
+     */
+    private fun spToPixels(metrics: DisplayMetrics, sp: Int): Float =
+            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp.toFloat(), metrics)
 
+    /**
+     * Detach it from window
+     */
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         animator?.removeAllUpdateListeners()
