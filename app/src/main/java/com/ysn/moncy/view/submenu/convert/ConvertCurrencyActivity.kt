@@ -157,6 +157,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         if (text_view_value_source_code_currency_activity_convert_currency.text == text_view_value_to_code_currency_activity_convert_currency.text) {
             text_view_to_amount_activity_convert_currency.text = text_view_source_amount_activity_convert_currency.text
         } else {
+            Log.d(TAG, "valueConverterCurrency: $valueCurrencyTo!!")
             text_view_to_amount_activity_convert_currency.text = convertCurrencyPresenter?.doConvertCurrency(
                     sourceAmount = sourceAmount.toDouble(),
                     valueConverterCurrency = valueCurrencyTo!!
@@ -277,6 +278,7 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     }
 
     override fun loadDataConverterCurrency(valueConverterCurrency: Double) {
+        this.valueCurrencyTo = valueConverterCurrency
         progress_bar_loading_activty_convert_currency.visibility = View.GONE
         text_view_to_amount_activity_convert_currency.visibility = View.VISIBLE
         val sourceAmount = text_view_source_amount_activity_convert_currency.text
