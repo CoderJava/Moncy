@@ -20,6 +20,13 @@ class AdapterCurrencyNow(private var context: Context, private var listMergeLive
 
     private val TAG = javaClass.simpleName
 
+    /**
+     * On create view holder
+     * @param parent
+     * View group parent
+     * @param viewType
+     * View type view holder
+     */
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view: View
         val inflater = LayoutInflater.from(parent?.context)
@@ -42,6 +49,13 @@ class AdapterCurrencyNow(private var context: Context, private var listMergeLive
         }
     }
 
+    /**
+     * On bind view holder
+     * @param holder
+     * view holder for adapter
+     * @param position
+     * Position view holder
+     */
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         when (position) {
             0 -> {
@@ -72,8 +86,16 @@ class AdapterCurrencyNow(private var context: Context, private var listMergeLive
         }
     }
 
+    /**
+     * Get item count adapter
+     */
     override fun getItemCount(): Int = listMergeLive.size
 
+    /**
+     * Get item view type view holder for adapter
+     * @param position
+     * Position view holder for adapter
+     */
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) {
             /** header */
@@ -87,12 +109,32 @@ class AdapterCurrencyNow(private var context: Context, private var listMergeLive
         }
     }
 
+    /**
+     * View holder parent extends RecyclerView.ViewHolder
+     * @param itemView
+     * Item view holder
+     */
     inner open class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
 
+    /**
+     * View holder header extends View holder parent
+     * @param itemView
+     * Item view holder header
+     */
     inner class ViewHolderCurrencyNowHeader(itemView: View?) : ViewHolder(itemView)
 
+    /**
+     * View holder body extends View holder parent
+     * @param itemView
+     * Item view holder body
+     */
     inner class ViewHolderCurrencyNowBody(itemView: View?) : ViewHolder(itemView)
 
+    /**
+     * View holder footer extends view holder parent
+     * @param itemView
+     * Item view holder footer
+     */
     inner class ViewHolderCurrencyNowFooter(itemView: View?) : ViewHolder(itemView)
 
 }

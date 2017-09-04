@@ -21,6 +21,11 @@ class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnC
     private var historicalDatePresenter: HistoricalDatePresenter? = null
     private lateinit var progressDialog: ProgressDialog
 
+    /**
+     * On create activity
+     * @param savedInstanceState
+     * Bundle savedInstannceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_historical_date)
@@ -31,27 +36,44 @@ class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnC
         doLoadData()
     }
 
+    /**
+     * Setup data
+     */
     private fun doLoadData() {
         val today = SimpleDateFormat("dd-MM-yyyy", Locale.US).format(Date())
         text_view_value_date_activity_historical_date.text = today
     }
 
+    /**
+     * Initialize listener for UI view
+     */
     private fun initListener() {
         button_change_date_activity_historical_date.setOnClickListener(this)
         button_submit_activity_historical_date.setOnClickListener(this)
     }
 
+    /**
+     * Initialize toolbar
+     */
     private fun initToolbar() {
         toolbar_activity_historical_date.title = "History Currency"
         setSupportActionBar(toolbar_activity_historical_date)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    /**
+     * On destroy activity
+     */
     override fun onDestroy() {
         super.onDestroy()
         onDetachView()
     }
 
+    /**
+     * On options item selected
+     * @param item
+     * Menu item option selected
+     */
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
         android.R.id.home -> {
             onBackPressed()
@@ -62,18 +84,32 @@ class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnC
         }
     }
 
-    fun initPresenter() {
+    /**
+     * Initialize presenter
+     */
+    private fun initPresenter() {
         historicalDatePresenter = HistoricalDatePresenter()
     }
 
+    /**
+     * On attach view
+     */
     override fun onAttachView() {
         historicalDatePresenter?.onAttach(this)
     }
 
+    /**
+     * On detach view
+     */
     override fun onDetachView() {
         historicalDatePresenter?.onDetach()
     }
 
+    /**
+     * Method implements View.OnClickListener
+     * @param view
+     * View clicked
+     */
     override fun onClick(view: View?) {
         when (view?.id) {
             button_change_date_activity_historical_date.id -> {
@@ -113,6 +149,9 @@ class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnC
         }
     }
 
+    /**
+     * Initialize progress dialog
+     */
     private fun initProgressDialog() {
         progressDialog = ProgressDialog(this)
         progressDialog.setMessage(getString(R.string.please_wait))
@@ -120,7 +159,17 @@ class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnC
         progressDialog.show()
     }
 
-    override fun submit(strSourceHistorical: String, strDateHistorical: String, listMergeHistorical: ArrayList<MergeHistorical>) {
+    /**
+     * Submit data success to get data history currency
+     * @param strSourceHistorical
+     * Source currency code history
+     * @param strDateHistorical
+     * Date history currency
+     * @param listMergeHistorical
+     * List data merge historical
+     */
+    override fun submit(strSourceHistorical: String, strDateHistorical: String,
+                        listMergeHistorical: ArrayList<MergeHistorical>) {
         val historicalResultFragment = HistoricalResultFragment()
         val bundle = Bundle()
         bundle.putString("source", strSourceHistorical)
@@ -146,6 +195,9 @@ class HistoricalDateActivity : AppCompatActivity(), HistoricalDateView, View.OnC
 
     }
 
+    /**
+     * Submit data failed to get data history currency
+     */
     override fun submitFailed() {
         progressDialog.dismiss()
         Snackbar.make(

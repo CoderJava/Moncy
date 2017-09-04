@@ -21,11 +21,25 @@ class AdapterChooseConvertCurrency(val context: Context, val listMergeConvertCur
 
     private val TAG = javaClass.simpleName
 
+    /**
+     * On create view holder
+     * @param parent
+     * View group parent
+     * @param viewType
+     * View type view holder
+     */
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolderChooseConvertCurrency {
         val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_data_choose_convert_currency, null)
         return ViewHolderChooseConvertCurrency(view)
     }
 
+    /**
+     * On bind view holder
+     * @param holder
+     * View holder choose convert currency
+     * @param position
+     * Position item
+     */
     override fun onBindViewHolder(holder: ViewHolderChooseConvertCurrency?, position: Int) {
         val mergeConvertCurrency = listMergeConvertCurrency[position]
         SvgLoader(context).load()
@@ -35,8 +49,16 @@ class AdapterChooseConvertCurrency(val context: Context, val listMergeConvertCur
         holder?.itemView?.text_view_currency_code_item_data_choose_convert_currency?.text = mergeConvertCurrency.currencyCode
     }
 
+    /**
+     * Get item count adapter
+     */
     override fun getItemCount(): Int = listMergeConvertCurrency.size
 
+    /**
+     * View holder choose convert currency
+     * @param itemView
+     * View item
+     */
     inner class ViewHolderChooseConvertCurrency(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         init {
             itemView?.setOnClickListener {
@@ -45,8 +67,14 @@ class AdapterChooseConvertCurrency(val context: Context, val listMergeConvertCur
         }
     }
 
+    /**
+     * Listener for view holder choose convert currency
+     */
     interface ListenerViewHolderChooseConvertCurrency {
 
+        /**
+         * Method interface on click for item data merge convert currency
+         */
         fun onClick(mergeConvertCurrency: MergeConvertCurrency)
 
     }

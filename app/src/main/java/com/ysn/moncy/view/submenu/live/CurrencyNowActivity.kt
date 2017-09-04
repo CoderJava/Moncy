@@ -22,6 +22,11 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
     private var currencyNowPresenter: CurrencyNowPresenter? = null
     private lateinit var progressDialog: ProgressDialog
 
+    /**
+     * On create activity
+     * @param savedInstanceState
+     * Bundle savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_currency_now)
@@ -32,6 +37,9 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
         doLoadData()
     }
 
+    /**
+     * Initialize listener view UI
+     */
     private fun initListener() {
         button_try_again_activity_currency_now.setOnClickListener(this)
 
@@ -40,6 +48,9 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
         }
     }
 
+    /**
+     * Do refresh data currency now
+     */
     private fun doRefreshData() {
         swipe_refresh_layout_activity_currency_now.isRefreshing = true
         relative_layout_container_activity_currency_now?.visibility = View.GONE
@@ -47,6 +58,11 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
         currencyNowPresenter?.onLoadData(this, true)
     }
 
+    /**
+     * Method implements View.OnClickListener
+     * @param view
+     * View UI clicked
+     */
     override fun onClick(view: View?) {
         when (view?.id) {
             button_try_again_activity_currency_now.id -> {
@@ -58,12 +74,20 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
         }
     }
 
+    /**
+     * Initialize toolbar
+     */
     private fun initToolbar() {
         toolbar_activity_currency_now.title = "Currency Now"
         setSupportActionBar(toolbar_activity_currency_now)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    /**
+     * On options item selected
+     * @param item
+     * Menu item selected
+     */
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
         android.R.id.home -> {
             onBackPressed()
@@ -75,7 +99,9 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
 
     }
 
-
+    /**
+     * Do load data currency now
+     */
     private fun doLoadData() {
         initProgressDialog()
         relative_layout_container_activity_currency_now.visibility = View.GONE
@@ -83,6 +109,9 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
         currencyNowPresenter?.onLoadData(this)
     }
 
+    /**
+     * Initialize progress dialog
+     */
     private fun initProgressDialog() {
         progressDialog = ProgressDialog(this)
         progressDialog.setMessage(getString(R.string.please_wait))
@@ -90,24 +119,46 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
         progressDialog.show()
     }
 
+    /**
+     * Initialize presenter
+     */
     private fun initPresenter() {
         currencyNowPresenter = CurrencyNowPresenter()
     }
 
+    /**
+     * On attach view
+     */
     override fun onAttachView() {
         currencyNowPresenter?.onAttach(this)
     }
 
+    /**
+     * On detach view
+     */
     override fun onDetachView() {
         currencyNowPresenter?.onDetach()
     }
 
+    /**
+     * On destroy activity
+     */
     override fun onDestroy() {
         onDetachView()
         super.onDestroy()
     }
 
-    override fun loadData(adapterCurrencyNow: AdapterCurrencyNow, currencyNow: CurrencyNow?, isRefresh: Boolean) {
+    /**
+     * Load data currency now success
+     * @param adapterCurrencyNow
+     * Adapter currency now
+     * @param currencyNow
+     * Data model currency now
+     * @param isRefresh
+     * Indicator that this method result for refresh data or not
+     */
+    override fun loadData(adapterCurrencyNow: AdapterCurrencyNow, currencyNow: CurrencyNow?,
+                          isRefresh: Boolean) {
         setProgressViewDone(isRefresh)
 
         relative_layout_container_activity_currency_now.visibility = View.VISIBLE
@@ -121,6 +172,11 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
         recycler_view_data_activity_currency_now.adapter = adapterCurrencyNow
     }
 
+    /**
+     * Load data currency now failed
+     * @param isRefresh
+     * Indicator that this result for refresh data or not
+     */
     override fun loadDataFailed(isRefresh: Boolean) {
         setProgressViewDone(isRefresh)
 
@@ -129,6 +185,11 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
         showSnackbarFailed()
     }
 
+    /**
+     * Set progress view done or not
+     * @param isRefresh
+     * Indicator that progress view done or not
+     */
     private fun setProgressViewDone(isRefresh: Boolean) {
         if (!isRefresh)
             progressDialog.dismiss()
@@ -136,6 +197,9 @@ class CurrencyNowActivity : AppCompatActivity(), CurrencyNowView, View.OnClickLi
             swipe_refresh_layout_activity_currency_now.isRefreshing = false
     }
 
+    /**
+     * Show message failed in snack bar
+     */
     private fun showSnackbarFailed() {
         Snackbar.make(
                 findViewById(android.R.id.content),

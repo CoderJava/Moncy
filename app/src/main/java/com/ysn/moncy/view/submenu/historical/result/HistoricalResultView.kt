@@ -8,6 +8,9 @@ import com.ysn.moncy.view.submenu.historical.result.adapter.AdapterHistoricalRes
  */
 interface HistoricalResultView : MvpView {
 
+    /**
+     * Method interface load data history currency to setup adapter
+     */
     fun loadData(adapterHistoricalResult: AdapterHistoricalResult)
 
 }

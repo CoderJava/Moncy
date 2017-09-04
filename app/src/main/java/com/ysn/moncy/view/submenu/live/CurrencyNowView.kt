@@ -9,8 +9,14 @@ import com.ysn.moncy.view.submenu.live.adapter.AdapterCurrencyNow
  */
 interface CurrencyNowView : MvpView {
 
+    /**
+     * Method interface to load data currency now success from API Service
+     */
     fun loadData(adapterCurrencyNow: AdapterCurrencyNow, currencyNow: CurrencyNow?, isRefresh: Boolean)
 
+    /**
+     * Method interface to laod data currency now failed from API Service
+     */
     fun loadDataFailed(isRefresh: Boolean)
 
 

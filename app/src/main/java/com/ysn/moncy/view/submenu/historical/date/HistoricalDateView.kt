@@ -8,8 +8,21 @@ import com.ysn.moncy.view.base.mvp.MvpView
  */
 interface HistoricalDateView : MvpView {
 
-    fun submit(strSourceHistorical: String, strDateHistorical: String, listMergeHistorical: ArrayList<MergeHistorical>)
+    /**
+     * Method interface submit data success to get data history currency
+     * @param strSourceHistorical
+     * Source currency code
+     * @param strDateHistorical
+     * History date currency
+     * @param listMergeHistorical
+     * List data merge historical
+     */
+    fun submit(strSourceHistorical: String, strDateHistorical: String,
+               listMergeHistorical: ArrayList<MergeHistorical>)
 
+    /**
+     * Method interface submit data failed to get data history currency
+     */
     fun submitFailed()
 
 }

@@ -8,8 +8,20 @@ import com.ysn.moncy.view.submenu.available.adapter.AdapterAvailableCurrency
  */
 interface AvailableCurrencyView : MvpView {
 
+    /**
+     * Method interface load data available currency failed
+     * @param isRefresh
+     * Indicator that this method interface is called for refresh or not
+     */
     fun loadDataFailed(isRefresh: Boolean)
 
+    /**
+     * Method interface load data available currency success
+     * @param adapterAvailableCurrency
+     * Adapter for recycler view
+     * @param isRefresh
+     * Indicator that this method interface is called for refresh or not
+     */
     fun  loadData(adapterAvailableCurrency: AdapterAvailableCurrency, isRefresh: Boolean)
 
 }

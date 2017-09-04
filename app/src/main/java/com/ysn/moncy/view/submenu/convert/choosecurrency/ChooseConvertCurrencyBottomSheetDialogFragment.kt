@@ -28,6 +28,13 @@ class ChooseConvertCurrencyBottomSheetDialogFragment : BottomSheetDialogFragment
     private lateinit var dialogView: View
     private lateinit var labelView: String
 
+    /**
+     * Setup bottom sheet dialog fragment
+     * @param dialog
+     * Bottom sheet dialog fragment
+     * @param style
+     * Style for bottom sheet dialog fragment
+     */
     override fun setupDialog(dialog: Dialog?, style: Int) {
         super.setupDialog(dialog, style)
         dialogView = View.inflate(
@@ -61,28 +68,48 @@ class ChooseConvertCurrencyBottomSheetDialogFragment : BottomSheetDialogFragment
         )
     }
 
+    /**
+     * Initialize presenter
+     */
     private fun initPresenter() {
         chooseConvertCurrencyPresenter = ChooseConvertCurrencyPresenter()
     }
 
+    /**
+     * On attach view
+     */
     override fun onAttachView() {
         chooseConvertCurrencyPresenter?.onAttach(this)
     }
 
+    /**
+     * On detach view
+     */
     override fun onDetachView() {
         chooseConvertCurrencyPresenter?.onDetach()
     }
 
+    /**
+     * Do load data currency code and country flag
+     */
     private fun doLoadData() {
         chooseConvertCurrencyPresenter?.onLoadData(context, listMergeConvertCurrency)
     }
 
+    /**
+     * Event bus subscribe
+     * @param listMergeConvertCurrency
+     * Data subcribe from event bus ConvertCurrency
+     */
     @Subscribe(sticky = true)
     fun onMessageEvent(listMergeConvertCurrency: List<MergeConvertCurrency>) {
         this.listMergeConvertCurrency = listMergeConvertCurrency
         doLoadData()
     }
 
+    /**
+     * Load data success currency code and country flag
+     */
     override fun loadData(adapterChooseConvertCurrency: AdapterChooseConvertCurrency) {
         dialogView.recycler_view_data_bottom_sheet_dialog_fragment_choose_convert_currency.layoutManager =
                 LinearLayoutManager(context)
@@ -93,6 +120,11 @@ class ChooseConvertCurrencyBottomSheetDialogFragment : BottomSheetDialogFragment
                 adapterChooseConvertCurrency
     }
 
+    /**
+     * On click item adapter
+     * @param mergeConvertCurrency
+     * Data item merge convert currency clicked
+     */
     override fun onClickItem(mergeConvertCurrency: MergeConvertCurrency) {
         val mapData = HashMap<String, Any>()
         mapData.put("fromView", labelView)

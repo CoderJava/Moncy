@@ -11,7 +11,6 @@ import com.ysn.moncy.network.ApiCountryService
 import com.ysn.moncy.network.ApiFixerService
 import com.ysn.moncy.network.NetworkClient
 import com.ysn.moncy.view.base.mvp.MvpPresenter
-import com.ysn.moncy.view.base.mvp.MvpView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
@@ -27,14 +26,27 @@ class ConvertCurrencyPresenter : MvpPresenter<ConvertCurrencyView> {
     private lateinit var context: Context
     private lateinit var listMergeConvertCurrency: List<MergeConvertCurrency>
 
-    override fun onAttach(mvpView: MvpView) {
-        convertCurrencyView = mvpView as ConvertCurrencyView
+    /**
+     * On attach view
+     * @param mvpView
+     * View convert currency view
+     */
+    override fun onAttach(mvpView: ConvertCurrencyView) {
+        convertCurrencyView = mvpView
     }
 
+    /**
+     * On detach view
+     */
     override fun onDetach() {
         convertCurrencyView = null
     }
 
+    /**
+     * On load data currency from API services to get currency code and flag country
+     * @param context
+     * Context
+     */
     fun onLoadData(context: Context) {
         this.context = context
 
@@ -54,7 +66,7 @@ class ConvertCurrencyPresenter : MvpPresenter<ConvertCurrencyView> {
         val observableCountry = apiCountry!!
                 .getDataCountry("name;region;latlng;currencies;flag")
 
-        /** merge */
+        /** merge it */
         Observable.
                 combineLatest(
                         observableAvailableCurrency,
@@ -124,6 +136,13 @@ class ConvertCurrencyPresenter : MvpPresenter<ConvertCurrencyView> {
 
     }
 
+    /**
+     * On load data converter currency from API service
+     * @param sourceCode
+     * Source currency code
+     * @param toCode
+     * Destination currency code
+     */
     fun onLoadDataConverterCurrency(sourceCode: String, toCode: String) {
         /** prepare data converter currency */
         val apiCurrency = NetworkClient
@@ -155,6 +174,13 @@ class ConvertCurrencyPresenter : MvpPresenter<ConvertCurrencyView> {
 
     }
 
+    /**
+     * Do calculate convert currency
+     * @param sourceAmount
+     * Value source amount currency
+     * @param valueConverterCurrency
+     * Value converter currency
+     */
     fun doConvertCurrency(sourceAmount: Double, valueConverterCurrency: Double): Double =
             sourceAmount * valueConverterCurrency
 

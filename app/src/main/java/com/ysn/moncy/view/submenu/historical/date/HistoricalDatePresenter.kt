@@ -9,7 +9,6 @@ import com.ysn.moncy.network.ApiCountryService
 import com.ysn.moncy.network.ApiCurrencyService
 import com.ysn.moncy.network.NetworkClient
 import com.ysn.moncy.view.base.mvp.MvpPresenter
-import com.ysn.moncy.view.base.mvp.MvpView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
@@ -30,14 +29,29 @@ class HistoricalDatePresenter : MvpPresenter<HistoricalDateView> {
     private lateinit var strDateHistorical: String
     private lateinit var strSourceHistorical: String
 
-    override fun onAttach(mvpView: MvpView) {
-        historicalDateView = mvpView as HistoricalDateView
+    /**
+     * On attach view
+     * @param mvpView
+     * View historical date view
+     */
+    override fun onAttach(mvpView: HistoricalDateView) {
+        historicalDateView = mvpView
     }
 
+    /**
+     * On detach view
+     */
     override fun onDetach() {
         historicalDateView = null
     }
 
+    /**
+     * On submit data date to get data currency
+     * @param context
+     * Context
+     * @param dateHistory
+     * Date history
+     */
     fun onSubmit(context: Context, dateHistory: String) {
         this.context = context
 
@@ -59,7 +73,7 @@ class HistoricalDatePresenter : MvpPresenter<HistoricalDateView> {
         )
         val observableCountry = apiCountry!!.getDataCountry("name;flag;currencies")
 
-        /** merge */
+        /** merge it */
         Observable
                 .combineLatest(
                         observableHistoryCurrency,
@@ -130,8 +144,7 @@ class HistoricalDatePresenter : MvpPresenter<HistoricalDateView> {
                             listMergeHistorical = data["listMergeHistorical"] as ArrayList<MergeHistorical>
                             /*listMergeHistorical = data as ArrayList<MergeHistorical>*/
                         },
-                        {
-                            t: Throwable ->
+                        { t: Throwable ->
                             t.printStackTrace()
                             historicalDateView?.submitFailed()
                         },

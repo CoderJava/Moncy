@@ -26,6 +26,11 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
     private lateinit var listMergeConvertCurrency: List<MergeConvertCurrency>
     private var valueCurrencyTo: Double? = 0.0
 
+    /**
+     * On create
+     * @param savedInstanceState
+     * Bundle savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_convert_currency)
@@ -37,12 +42,18 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         doLoadData()
     }
 
+    /**
+     * Initialize toolbar
+     */
     private fun initToolbar() {
         toolbar_activity_convert_currency.title = "Convert Currency"
         setSupportActionBar(toolbar_activity_convert_currency)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    /**
+     * Initialize listener for UI view
+     */
     private fun initListener() {
         text_view_value_source_code_currency_activity_convert_currency.setOnClickListener(this)
         image_view_icon_drop_down_value_source_currency_activity_convert_currency.setOnClickListener(this)
@@ -61,9 +72,13 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         button_keypad_9_activity_convert_currency.setOnClickListener(this)
         button_keypad_dot_activity_convert_currency.setOnClickListener(this)
         button_keypad_backspace_activity_convert_currency.setOnClickListener(this)
-        button_keypad_clear_activity_convert_currency.setOnClickListener(this)
-    }
+        button_keypad_clear_activity_convert_currency.setOnClickListener(this) }
 
+    /**
+     * Method implements View.OnClickListener
+     * @param view
+     * View clicked
+     */
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.text_view_value_source_code_currency_activity_convert_currency,
@@ -132,6 +147,11 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         }
     }
 
+    /**
+     * Update view source amount
+     * @param keypad
+     * Keypad clicked
+     */
     private fun updateSourceAmount(keypad: String) {
         val sourceAmount = text_view_source_amount_activity_convert_currency.text.let {
             when {
@@ -165,6 +185,9 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         }
     }
 
+    /**
+     * Do load data currency to get currency code and flag country
+     */
     private fun doLoadData() {
         initProgressDialog()
         linear_layout_container_content_activity_convert_currency.visibility = View.GONE
@@ -172,6 +195,9 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         convertCurrencyPresenter?.onLoadData(this)
     }
 
+    /**
+     * Initialize progress dialog
+     */
     private fun initProgressDialog() {
         progressDialog = ProgressDialog(this)
         progressDialog.setMessage(getString(R.string.please_wait))
@@ -179,28 +205,48 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         progressDialog.show()
     }
 
+    /**
+     * On resume activity
+     */
     override fun onResume() {
         onAttachView()
         super.onResume()
     }
 
+    /**
+     * On destroy activity
+     */
     override fun onDestroy() {
         super.onDestroy()
         onDetachView()
     }
 
+    /**
+     * Initialize presenter
+     */
     private fun initPresenter() {
         convertCurrencyPresenter = ConvertCurrencyPresenter()
     }
 
+    /**
+     * On attach view
+     */
     override fun onAttachView() {
         convertCurrencyPresenter?.onAttach(this)
     }
 
+    /**
+     * On detach view
+     */
     override fun onDetachView() {
         convertCurrencyPresenter?.onDetach()
     }
 
+    /**
+     * On options item selected
+     * @param item
+     * Menu item selected
+     */
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
         android.R.id.home -> {
             onBackPressed()
@@ -211,6 +257,11 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         }
     }
 
+    /**
+     * Load data success to get currency code and flag country
+     * @param listMergeConvertCurrency
+     * List data merge convert currency
+     */
     override fun loadData(listMergeConvertCurrency: List<MergeConvertCurrency>) {
         this.listMergeConvertCurrency = listMergeConvertCurrency
         Log.d(TAG, "listMergeConvertCurrency: $listMergeConvertCurrency")
@@ -220,6 +271,9 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         doLoadDataConverterCurrency()
     }
 
+    /**
+     * Load data currency failed to get currency code and flag country
+     */
     override fun loadDataFailed() {
         showSnackbarFailed()
         setProgressViewDone()
@@ -228,6 +282,11 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         doLoadDataConverterCurrency()
     }
 
+    /**
+     * Show message failed in snack bar
+     * @param message
+     * Message failed
+     */
     private fun showSnackbarFailed(message: String = getString(R.string.load_data_failed)) {
         Snackbar.make(
                 findViewById(android.R.id.content),
@@ -236,10 +295,18 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         ).show()
     }
 
+    /**
+     * Set progress view is done or dismiss
+     */
     private fun setProgressViewDone() {
         progressDialog.dismiss()
     }
 
+    /**
+     * Event bus subscribe
+     * @param mapData
+     * Data subscribe from event bus ChooseConvertCurrencyBottomSheetDialogFragment
+     */
     @Subscribe
     fun onMessageEvent(mapData: Map<String, Any>) {
         val fromView = mapData.get("fromView") as String
@@ -264,6 +331,9 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         }
     }
 
+    /**
+     * Do load data converter currency
+     */
     private fun doLoadDataConverterCurrency() {
         progress_bar_loading_activty_convert_currency.visibility = View.VISIBLE
         text_view_to_amount_activity_convert_currency.visibility = View.INVISIBLE
@@ -277,6 +347,11 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         )
     }
 
+    /**
+     * Load data converter currency success
+     * @param valueConverterCurrency
+     * Result converter currency
+     */
     override fun loadDataConverterCurrency(valueConverterCurrency: Double) {
         this.valueCurrencyTo = valueConverterCurrency
         progress_bar_loading_activty_convert_currency.visibility = View.GONE
@@ -291,6 +366,9 @@ class ConvertCurrencyActivity : AppCompatActivity(), ConvertCurrencyView, View.O
         text_view_to_amount_activity_convert_currency.text = toAmount.toString()
     }
 
+    /**
+     * Load data converter currency failed
+     */
     override fun loadDataConverterCurrencyFailed() {
         progress_bar_loading_activty_convert_currency.visibility = View.GONE
         text_view_to_amount_activity_convert_currency.visibility = View.VISIBLE

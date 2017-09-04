@@ -19,6 +19,10 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
     private var availableCurrencyPresenter: AvailableCurrencyPresenter? = null
     private lateinit var progressDialog: ProgressDialog
 
+    /**
+     * @param savedInstanceState
+     * Bundle savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_available_currency)
@@ -29,6 +33,11 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         doLoadData()
     }
 
+    /**
+     * On options item selected
+     * @param item
+     * Item selected
+     */
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
         android.R.id.home -> {
             onBackPressed()
@@ -39,11 +48,17 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         }
     }
 
+    /**
+     * On destroy activity
+     */
     override fun onDestroy() {
         super.onDestroy()
         onDetachView()
     }
 
+    /**
+     * Do load data available currency
+     */
     private fun doLoadData() {
         initProgressDialog()
         recycler_view_data_available_currency.visibility = View.GONE
@@ -51,6 +66,9 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         availableCurrencyPresenter?.onLoadData(this)
     }
 
+    /**
+     * Initialize Progress Dialog
+     */
     private fun initProgressDialog() {
         progressDialog = ProgressDialog(this)
         progressDialog.setMessage(getString(R.string.please_wait))
@@ -58,6 +76,9 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         progressDialog.show()
     }
 
+    /**
+     *
+     */
     private fun initListener() {
         button_try_again_activity_available_currency.setOnClickListener(this)
 
@@ -66,6 +87,9 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         }
     }
 
+    /**
+     * Do refresh data available currency
+     */
     private fun doRefreshData() {
         swipe_refresh_layout_activity_available_currency.isRefreshing = true
         recycler_view_data_available_currency?.visibility = View.GONE
@@ -73,6 +97,11 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         availableCurrencyPresenter?.onLoadData(this, true)
     }
 
+    /**
+     * Method implements View.OnClickListener
+     * @param view
+     * View UI when clicked
+     */
     override fun onClick(view: View?) {
         when (view?.id) {
             button_try_again_activity_available_currency.id -> {
@@ -84,24 +113,41 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         }
     }
 
+    /**
+     * Initialize toolbar
+     */
     private fun initToolbar() {
         toolbar_activity_available_currency.title = "Available Currency"
         setSupportActionBar(toolbar_activity_available_currency)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    /**
+     * Initialize presenter
+     */
     private fun initPresenter() {
         availableCurrencyPresenter = AvailableCurrencyPresenter()
     }
 
+    /**
+     * On attach view
+     */
     override fun onAttachView() {
         availableCurrencyPresenter?.onAttach(this)
     }
 
+    /**
+     * On detach view
+     */
     override fun onDetachView() {
         availableCurrencyPresenter?.onDetach()
     }
 
+    /**
+     * Load data available currency failed
+     * @param isRefresh
+     * Indicator that method load data is call for refresh or not
+     */
     override fun loadDataFailed(isRefresh: Boolean) {
         setProgressViewDone(isRefresh)
 
@@ -110,6 +156,9 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         showSnackbarFailed()
     }
 
+    /**
+     * Show message failed in snack bar
+     */
     private fun showSnackbarFailed() {
         Snackbar.make(
                 findViewById(android.R.id.content),
@@ -118,6 +167,13 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         ).show()
     }
 
+    /**
+     * Load data available currency success
+     * @param adapterAvailableCurrency
+     * Adapter available currency for recycler view
+     * @param isRefresh
+     * Indicator that load data is used for refresh or not
+     */
     override fun loadData(adapterAvailableCurrency: AdapterAvailableCurrency, isRefresh: Boolean) {
         setProgressViewDone(isRefresh)
 
@@ -128,6 +184,11 @@ class AvailableCurrencyActivity : AppCompatActivity(), AvailableCurrencyView, Vi
         recycler_view_data_available_currency.adapter = adapterAvailableCurrency
     }
 
+    /**
+     * Set progress dialog to dismiss and set swipe is refreshing to false
+     * @param isRefresh
+     * Indicator that progress view is done or not
+     */
     private fun setProgressViewDone(isRefresh: Boolean) {
         if (!isRefresh) {
             progressDialog.dismiss()

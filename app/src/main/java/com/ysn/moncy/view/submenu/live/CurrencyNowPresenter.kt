@@ -29,15 +29,25 @@ class CurrencyNowPresenter : MvpPresenter<CurrencyNowView> {
     private lateinit var listQuotesValues: ArrayList<String>
     private lateinit var listMergeLive: ArrayList<MergeLive>
 
-    override fun onAttach(mvpView: MvpView) {
-        currencyNowView = mvpView as CurrencyNowView
+    /**
+     * On attach view
+     * @param mvpView
+     * View currency now view
+     */
+    override fun onAttach(mvpView: CurrencyNowView) {
+        currencyNowView = mvpView
     }
 
+    /**
+     * On detach view
+     */
     override fun onDetach() {
         currencyNowView = null
     }
 
-
+    /**
+     * On load data currency now from API Services
+     */
     fun onLoadData(context: Context, isRefresh: Boolean = false) {
         this.context = context
 
@@ -55,7 +65,7 @@ class CurrencyNowPresenter : MvpPresenter<CurrencyNowView> {
         val observableCurrencyNow = apiCurrency!!.getLive(BuildConfig.API_KEY_CURRENCY)
         val observableCountry = apiCountry!!.getDataCountry("name;flag;currencies")
 
-        /** merge */
+        /** merge it */
         Observable
                 .combineLatest(
                         observableCurrencyNow,
@@ -115,12 +125,10 @@ class CurrencyNowPresenter : MvpPresenter<CurrencyNowView> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        {
-                            data: List<MergeLive> ->
+                        { data: List<MergeLive> ->
                             listMergeLive = data as ArrayList<MergeLive>
                         },
-                        {
-                            t: Throwable ->
+                        { t: Throwable ->
                             t.printStackTrace()
                             currencyNowView?.loadDataFailed(isRefresh)
                         },

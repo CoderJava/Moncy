@@ -20,6 +20,13 @@ class AdapterHistoricalResult(private var context: Context, private var listMerg
 
     private val TAG = javaClass.simpleName
 
+    /**
+     * On create view holder
+     * @param parent
+     * View group parent
+     * @param viewType
+     * View type view holder
+     */
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view: View
         val inflater = LayoutInflater.from(parent?.context)
@@ -42,6 +49,13 @@ class AdapterHistoricalResult(private var context: Context, private var listMerg
         }
     }
 
+    /**
+     * On bind view holder
+     * @param holder
+     * View holder for adapter
+     * @param position
+     * Position view holder
+     */
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         when (position) {
             0 -> {
@@ -72,8 +86,14 @@ class AdapterHistoricalResult(private var context: Context, private var listMerg
         }
     }
 
+    /**
+     * Get item count from adapter
+     */
     override fun getItemCount(): Int = listMergeHistorical.size
 
+    /**
+     * Get item view type for view holder
+     */
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) {
             /** header */
@@ -87,12 +107,24 @@ class AdapterHistoricalResult(private var context: Context, private var listMerg
         }
     }
 
+    /**
+     * Parent view holder for adapter that extends Recycler View Holder
+     */
     inner open class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
 
+    /**
+     * View holder header extends parent view holder
+     */
     inner class ViewHolderHistoricalResultHeader(itemView: View?) : ViewHolder(itemView)
 
+    /**
+     * View holder body extends parent view holder
+     */
     inner class ViewHolderHistoricalResultBody(itemView: View?) : ViewHolder(itemView)
 
+    /**
+     * View holder footer extends parent view holder
+     */
     inner class ViewHolderHistoricalResultFooter(itemView: View?) : ViewHolder(itemView)
 
 }

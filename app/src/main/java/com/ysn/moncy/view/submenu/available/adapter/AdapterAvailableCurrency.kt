@@ -20,28 +20,32 @@ class AdapterAvailableCurrency(private val context: Context, private val listMer
 
     private val TAG = javaClass.simpleName
 
+    /**
+     * On create view holder
+     * @param parent
+     * View group parent
+     * @param viewType
+     * View type. Used it if you use multiple view type
+     */
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolderAvailableCurrency {
         val view = LayoutInflater.from(parent?.context)
                 .inflate(R.layout.item_available_currency, null)
         return ViewHolderAvailableCurrency(view)
     }
 
+    /**
+     * On bind view holder
+     * @param holder
+     * View holder for adapter
+     * @param position
+     * Position item
+     */
     override fun onBindViewHolder(holder: ViewHolderAvailableCurrency?, position: Int) {
         val mergeAvailable = listMergeAvailable[position]
 
         SvgLoader(context).load()
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .load(Uri.parse(mergeAvailable.flag))
-                /*.listener(object : RequestListener<Uri, PictureDrawable> {
-                    override fun onResourceReady(resource: PictureDrawable?, model: Uri?, target: Target<PictureDrawable>?, isFromMemoryCache: Boolean, isFirstResource: Boolean): Boolean {
-                        holder?.itemView?.shimmer_view_country_flag_item_available_currency?.visibility = View.INVISIBLE
-                        return false
-                    }
-
-                    override fun onException(e: Exception?, model: Uri?, target: Target<PictureDrawable>?, isFirstResource: Boolean): Boolean {
-                        return false
-                    }
-                })*/
                 .into(holder?.itemView?.image_view_country_flag_item_available_currency)
         holder?.itemView?.
                 text_view_country_name_item_available_currency?.
@@ -54,8 +58,14 @@ class AdapterAvailableCurrency(private val context: Context, private val listMer
                 text = mergeAvailable.region
     }
 
+    /**
+     * Get item count adapter
+     */
     override fun getItemCount(): Int = listMergeAvailable.size
 
+    /**
+     * View holder available currency
+     */
     inner class ViewHolderAvailableCurrency(itemView: View?) : RecyclerView.ViewHolder(itemView)
 
 }
