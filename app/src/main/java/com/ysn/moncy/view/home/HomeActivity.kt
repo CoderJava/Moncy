@@ -1,4 +1,4 @@
-package com.ysn.moncy.view.main
+package com.ysn.moncy.view.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,10 +16,10 @@ import com.ysn.moncy.view.submenu.live.CurrencyNowActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), MainView, View.OnClickListener {
+class HomeActivity : AppCompatActivity(), HomeView, View.OnClickListener {
 
     private val TAG = javaClass.simpleName
-    private var mainPresenter: MainPresenter? = null
+    private var homePresenter: HomePresenter? = null
 
     /**
      * @param savedInstanceState
@@ -45,21 +45,21 @@ class MainActivity : AppCompatActivity(), MainView, View.OnClickListener {
      * Initialize Presenter
      */
     private fun initPresenter() {
-        mainPresenter = MainPresenter()
+        homePresenter = HomePresenter()
     }
 
     /**
      * On attach view
      */
     override fun onAttachView() {
-        mainPresenter?.onAttach(this)
+        homePresenter?.onAttach(this)
     }
 
     /**
      * On detach view
      */
     override fun onDetachView() {
-        mainPresenter?.onDetach()
+        homePresenter?.onDetach()
     }
 
     /**
