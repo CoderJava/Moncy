@@ -11,18 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.main.MainActivity">
+        <activity android:name=".view.splash.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.home.HomeActivity" />
         <activity android:name=".view.submenu.live.CurrencyNowActivity" />
         <activity android:name=".view.submenu.available.AvailableCurrencyActivity" />
         <activity android:name=".view.submenu.historical.date.HistoricalDateActivity" />
         <activity android:name=".view.submenu.convert.ConvertCurrencyActivity" />
-        <activity android:name=".view.submenu.about.AboutActivity"></activity>
+        <activity android:name=".view.submenu.about.AboutActivity" />
     </application>
 
 </manifest>
