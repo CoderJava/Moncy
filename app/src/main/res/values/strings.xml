@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Moncy</string>
     <string name="image_view_banner_dbs">image view banner dbs</string>
+    <string name="image_view_currency_now">image view currency now</string>
+    <string name="currency_now">Currency Now</string>
+    <string name="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus ante, sollicitudin at faucibus non</string>
+    <string name="image_view_country_currency">image view country currency</string>
+    <string name="country_currency">Country Currency</string>
+    <string name="history_currency">History Currency</string>
+    <string name="about">About app</string>
 </resources>
