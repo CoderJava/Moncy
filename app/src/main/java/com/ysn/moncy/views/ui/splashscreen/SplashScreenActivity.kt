@@ -1,6 +1,5 @@
 package com.ysn.moncy.views.ui.splashscreen
 
-import android.content.Intent
 import android.os.Bundle
 import com.ysn.moncy.R
 import com.ysn.moncy.di.component.activity.splashscreen.DaggerSplashScreenActivityComponent
@@ -12,8 +11,6 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.jetbrains.anko.clearTask
-import org.jetbrains.anko.design.snackbar
-import org.jetbrains.anko.find
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.newTask
 import java.util.concurrent.TimeUnit
