@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 'android-P'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.ysn.moncy"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 'P'
         versionCode 2
         versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -19,6 +20,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "production"
     productFlavors {
         production {
             applicationIdSuffix ".production"
@@ -32,29 +34,69 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    /* Directory dependency */
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    /* Kotlin support */
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    /* Android support */
+    //noinspection GradleCompatible
+    implementation "com.android.support:appcompat-v7:27.1.1"
+    //noinspection GradleCompatible
+    implementation "com.android.support:design:27.1.1"
+
+    /* ConstraintLayout */
+    implementation "com.android.support.constraint:constraint-layout:1.1.0"
+
+    /* Testing framework */
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'javax.annotation:javax.annotation-api:1.2'
-    compile 'com.google.code.gson:gson:2.8.1'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.github.bumptech.glide:glide:3.8.0'
-    compile 'io.reactivex.rxjava2:rxkotlin:2.1.0'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:gridlayout-v7:25.3.1'
-    testCompile 'junit:junit:4.12'
+    testImplementation "junit:junit:4.12"
+
+    /* Type safe HTTP client for Android and Java by Square */
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:retrofit-converters:$retrofit_version"
+
+    /* OkHttp */
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    /* Reactive extensions for the JVM a library for composing asynchronous */
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+    /* RxJava bindings for Android */
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
+    /* A Java serialization or deserialization library to convert Java Object into JSON and revert */
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    /* Dependency injection */
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    compileOnly "org.glassfish:javax.annotation:$annotation_version"
+
+    /* Memory leak detection */
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
+
+    /* Fresco */
+    implementation "com.facebook.fresco:fresco:$fresco_version"
+
+    /* Stetho */
+    implementation "com.facebook.stetho:stetho-okhttp3:$stetho_version"
+
+    /* Android ktx */
+    implementation "androidx.core:core-ktx:$android_ktx_version"
+
+    /* Glide - An image loading and caching library for Android focused on smooth scrolling */
+    implementation "com.github.bumptech.glide:glide:$glide_version"
 }
 
 repositories {
     mavenCentral()
+    google()
 }
