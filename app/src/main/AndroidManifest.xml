@@ -14,9 +14,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".views.ui.splashscreen.SplashScreenActivity">
             <intent-filter>
-                <action android:name="android.intentHomeActivity.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intentHomeActivity.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".views.ui.home.HomeActivity" />
