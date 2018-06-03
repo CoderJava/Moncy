@@ -1,62 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ysn.moncy.view.splash.SplashScreenActivity">
+    tools:context="com.ysn.moncy.views.ui.splashscreen.SplashScreenActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/banner"
-        android:scaleType="centerCrop"
-        android:src="@drawable/banner" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.9"
-        android:background="#212121" />
-
-    <ImageView
-        android:id="@+id/image_view_icon_app_activity_splash_screen"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_centerInParent="true"
-        android:contentDescription="@string/icon_app"
-        android:src="@mipmap/ic_launcher" />
-
-    <TextView
-        android:id="@+id/text_view_app_name_activity_splash_screen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/image_view_icon_app_activity_splash_screen"
-        android:layout_centerHorizontal="true"
-        android:alpha="0.3"
-        android:fontFamily="sans-serif-condensed"
-        android:text="@string/app_name"
-        android:textColor="@android:color/white"
-        android:textSize="28sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_app_name_activity_splash_screen"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="sans-serif-condensed"
-        android:text="Please wait . . ."
-        android:textColor="@android:color/white" />
-
-    <ImageView
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:contentDescription="@string/banner"
-        android:src="@drawable/banner_dbs" />
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
