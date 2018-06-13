@@ -11,4 +11,7 @@
     <string name="image_view_icon_app">image view icon app</string>
     <string name="_1_0_0">1.0.0</string>
     <string name="developer">Developed by\nYSN Studio</string>
+    <string name="description_currency_now">Real time exchange rate data</string>
+    <string name="description_country_currency">List of the country\'s currency</string>
+    <string name="description_history_currency">Historical rates are available for most currencies</string>
 </resources>
