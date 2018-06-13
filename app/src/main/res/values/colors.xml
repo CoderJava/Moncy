@@ -11,5 +11,6 @@
     <color name="textOnSecondary">#FFFFFF</color>
 
     <color name="colorWhiteDark">#F0F0F0</color>
+    <color name="colorWhiteLight">#FFFFFF</color>
     <color name="colorDarkerGray">#AAAAAA</color>
 </resources>
