@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
-        tools:context="com.ysn.moncy.views.ui.aboutapp.AboutAppActivity">
+        tools:context=".views.ui.activity.aboutapp.AboutAppActivity">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_activity_about_app"
