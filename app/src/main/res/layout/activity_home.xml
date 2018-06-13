@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.ysn.moncy.views.ui.home.HomeActivity">
+    tools:context=".views.ui.activity.home.HomeActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_activity_home"
@@ -101,7 +101,7 @@
                         android:layout_toRightOf="@+id/image_view_currency_now_activity_home"
                         android:ellipsize="end"
                         android:maxLines="3"
-                        android:text="@string/description"
+                        android:text="@string/description_currency_now"
                         android:textColor="@color/colorDarkerGray" />
 
                 </RelativeLayout>
@@ -156,7 +156,7 @@
                         android:layout_toRightOf="@+id/image_view_country_currency_activity_home"
                         android:ellipsize="end"
                         android:maxLines="3"
-                        android:text="@string/description"
+                        android:text="@string/description_country_currency"
                         android:textColor="@color/colorDarkerGray" />
 
                 </RelativeLayout>
@@ -211,7 +211,7 @@
                         android:layout_toRightOf="@+id/image_view_history_currency_activity_home"
                         android:ellipsize="end"
                         android:maxLines="3"
-                        android:text="@string/description"
+                        android:text="@string/description_history_currency"
                         android:textColor="@color/colorDarkerGray" />
 
                 </RelativeLayout>

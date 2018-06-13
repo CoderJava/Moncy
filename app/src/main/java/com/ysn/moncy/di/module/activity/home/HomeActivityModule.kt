@@ -1,7 +1,7 @@
 package com.ysn.moncy.di.module.activity.home
 
 import com.ysn.moncy.di.ActivityScope
-import com.ysn.moncy.views.ui.home.HomePresenter
+import com.ysn.moncy.views.ui.activity.home.HomePresenter
 import dagger.Module
 import dagger.Provides
 

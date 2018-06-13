@@ -1,18 +1,19 @@
-package com.ysn.moncy.views.ui.home
+package com.ysn.moncy.views.ui.activity.home
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.ysn.moncy.R
 import com.ysn.moncy.di.component.activity.home.DaggerHomeActivityComponent
 import com.ysn.moncy.di.module.activity.home.HomeActivityModule
 import com.ysn.moncy.views.base.BaseActivity
-import com.ysn.moncy.views.ui.aboutapp.AboutAppActivity
+import com.ysn.moncy.views.ui.activity.aboutapp.AboutAppActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import org.jetbrains.anko.intentFor
 import javax.inject.Inject
 
-class HomeActivity : BaseActivity(), HomeView {
+class HomeActivity : BaseActivity(), HomeView, View.OnClickListener {
 
     @Inject
     lateinit var presenter: HomePresenter
@@ -21,6 +22,7 @@ class HomeActivity : BaseActivity(), HomeView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         initToolbar()
+        initListeners()
     }
 
     override fun onError() {
@@ -53,8 +55,33 @@ class HomeActivity : BaseActivity(), HomeView {
                 }
             }
 
-
     private fun initToolbar() {
         setSupportActionBar(toolbar_activity_home)
     }
+
+    private fun initListeners() {
+        relative_layout_container_currency_now_activity_home.setOnClickListener(this)
+        relative_layout_container_country_currency_activity_home.setOnClickListener(this)
+        relative_layout_container_history_currency_activity_home.setOnClickListener(this)
+    }
+
+    override fun onClick(view: View?) {
+        view?.let {
+            when (it.id) {
+                R.id.relative_layout_container_currency_now_activity_home -> {
+
+                }
+                R.id.relative_layout_container_country_currency_activity_home -> {
+
+                }
+                R.id.relative_layout_container_history_currency_activity_home -> {
+
+                }
+                else -> {
+                    /* nothing to do in here */
+                }
+            }
+        }
+    }
+
 }
