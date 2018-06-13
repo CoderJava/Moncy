@@ -3,7 +3,7 @@ package com.ysn.moncy.di.component.activity.splashscreen
 import com.ysn.moncy.di.ActivityScope
 import com.ysn.moncy.di.component.AppComponent
 import com.ysn.moncy.di.module.activity.splashscreen.SplashScreenActivityModule
-import com.ysn.moncy.views.ui.splashscreen.SplashScreenActivity
+import com.ysn.moncy.views.ui.activity.splashscreen.SplashScreenActivity
 import dagger.Component
 
 @ActivityScope

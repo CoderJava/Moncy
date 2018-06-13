@@ -1,4 +1,4 @@
-package com.ysn.moncy.views.ui.splashscreen
+package com.ysn.moncy.views.ui.activity.splashscreen
 
 import android.os.Bundle
 import com.ysn.moncy.R
@@ -6,7 +6,7 @@ import com.ysn.moncy.di.component.activity.splashscreen.DaggerSplashScreenActivi
 import com.ysn.moncy.di.module.activity.splashscreen.SplashScreenActivityModule
 import com.ysn.moncy.utils.showToastMessage
 import com.ysn.moncy.views.base.BaseActivity
-import com.ysn.moncy.views.ui.home.HomeActivity
+import com.ysn.moncy.views.ui.activity.home.HomeActivity
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
