@@ -7,7 +7,9 @@ import com.ysn.moncy.R
 import com.ysn.moncy.di.component.activity.home.DaggerHomeActivityComponent
 import com.ysn.moncy.di.module.activity.home.HomeActivityModule
 import com.ysn.moncy.views.base.BaseActivity
+import com.ysn.moncy.views.ui.aboutapp.AboutAppActivity
 import kotlinx.android.synthetic.main.activity_home.*
+import org.jetbrains.anko.intentFor
 import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), HomeView {
@@ -42,6 +44,8 @@ class HomeActivity : BaseActivity(), HomeView {
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
             when (item.itemId) {
                 R.id.menu_item_about_app_menu_home_activity -> {
+                    val intentAboutAppActivity = intentFor<AboutAppActivity>()
+                    startActivity(intentAboutAppActivity)
                     true
                 }
                 else -> {
