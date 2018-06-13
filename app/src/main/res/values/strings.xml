@@ -8,4 +8,7 @@
     <string name="country_currency">Country Currency</string>
     <string name="history_currency">History Currency</string>
     <string name="about">About app</string>
+    <string name="image_view_icon_app">image view icon app</string>
+    <string name="_1_0_0">1.0.0</string>
+    <string name="developer">Developed by\nYSN Studio</string>
 </resources>
