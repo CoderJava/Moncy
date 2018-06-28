@@ -1,7 +1,11 @@
 package com.ysn.moncy.utils
 
 import android.app.Activity
+import android.support.constraint.ConstraintLayout
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import com.ysn.moncy.R
 import org.jetbrains.anko.design.longSnackbar
 import org.jetbrains.anko.design.snackbar
 import org.jetbrains.anko.find
@@ -34,4 +38,42 @@ fun View.invisible() {
 
 fun View.gone() {
     visibility = View.GONE
+}
+
+fun Activity.showLoading(viewLoading: View, viewContent: ConstraintLayout) {
+    val fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+    fadeIn.setAnimationListener(object : Animation.AnimationListener {
+        override fun onAnimationRepeat(animation: Animation?) {
+            /* nothing to do in here */
+        }
+
+        override fun onAnimationEnd(animation: Animation?) {
+            viewLoading.visible()
+            viewContent.gone()
+        }
+
+        override fun onAnimationStart(animation: Animation?) {
+            /* nothing to do in here */
+        }
+    })
+    viewLoading.startAnimation(fadeIn)
+}
+
+fun Activity.hideLoading(viewLoading: View, viewContent: ConstraintLayout) {
+    val fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out)
+    fadeOut.setAnimationListener(object : Animation.AnimationListener {
+        override fun onAnimationRepeat(animation: Animation?) {
+            /* nothing to do in here */
+        }
+
+        override fun onAnimationEnd(animation: Animation?) {
+            viewContent.visible()
+            viewLoading.gone()
+        }
+
+        override fun onAnimationStart(animation: Animation?) {
+            /* nothing to do in here */
+        }
+    })
+    viewLoading.startAnimation(fadeOut)
 }
