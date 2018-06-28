@@ -27,6 +27,7 @@ android {
             buildConfigField("String", "BASE_URL_CURRENCY", "\"http://apilayer.net/api/\"")
             buildConfigField("String", "BASE_URL_FIXER", "\"http://api.fixer.io/\"")
             buildConfigField("String", "BASE_URL_COUNTRY", "\"https://restcountries.eu/rest/v2/\"")
+            buildConfigField("String", "BASE_URL_CURRENCY_CONVERTER", "\"http://free.currencyconverterapi.com/api/v5/\"")
             buildConfigField("String", "API_KEY_CURRENCY", "\"257cb471003f7806c5706d137f67a338\"")
         }
     }
@@ -94,6 +95,9 @@ dependencies {
 
     /* Glide - An image loading and caching library for Android focused on smooth scrolling */
     implementation "com.github.bumptech.glide:glide:$glide_version"
+
+    /* Lottie - Render After Effects animations natively */
+    implementation "com.airbnb.android:lottie:$lottie_version"
 }
 
 repositories {
