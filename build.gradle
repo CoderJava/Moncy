@@ -41,4 +41,5 @@ ext {
     stetho_version = "1.5.0"
     anko_version = "0.10.4"
     glide_version = "3.8.0"
+    lottie_version = "2.5.5"
 }
