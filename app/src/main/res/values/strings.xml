@@ -14,4 +14,14 @@
     <string name="description_currency_now">Real time exchange rate data</string>
     <string name="description_country_currency">List of the country\'s currency</string>
     <string name="description_history_currency">Historical rates are available for most currencies</string>
+    <string name="usd">USD</string>
+    <string name="source">Source</string>
+    <string name="value">value</string>
+    <string name="list_of_rates">List of Rates</string>
+    <string name="idr">IDR</string>
+    <string name="_16050">16050</string>
+    <string name="idr_usd"><![CDATA[IDR -> USD]]></string>
+    <string name="_0_00070556692">0.00070556692</string>
+    <string name="please_wait">Please wait</string>
+    <string name="from">From</string>
 </resources>
