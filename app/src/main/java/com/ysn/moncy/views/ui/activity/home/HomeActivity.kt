@@ -1,6 +1,7 @@
 package com.ysn.moncy.views.ui.activity.home
 
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -9,7 +10,9 @@ import com.ysn.moncy.di.component.activity.home.DaggerHomeActivityComponent
 import com.ysn.moncy.di.module.activity.home.HomeActivityModule
 import com.ysn.moncy.views.base.BaseActivity
 import com.ysn.moncy.views.ui.activity.aboutapp.AboutAppActivity
+import com.ysn.moncy.views.ui.activity.currencynow.CurrencyNowActivity
 import kotlinx.android.synthetic.main.activity_home.*
+import org.jetbrains.anko.find
 import org.jetbrains.anko.intentFor
 import javax.inject.Inject
 
@@ -56,7 +59,8 @@ class HomeActivity : BaseActivity(), HomeView, View.OnClickListener {
             }
 
     private fun initToolbar() {
-        setSupportActionBar(toolbar_activity_home)
+        val toolbar = find<Toolbar>(R.id.toolbar_activity_home)
+        setSupportActionBar(toolbar)
     }
 
     private fun initListeners() {
@@ -69,13 +73,14 @@ class HomeActivity : BaseActivity(), HomeView, View.OnClickListener {
         view?.let {
             when (it.id) {
                 R.id.relative_layout_container_currency_now_activity_home -> {
-
+                    val intentCurrencyNowActivity = intentFor<CurrencyNowActivity>()
+                    startActivity(intentCurrencyNowActivity)
                 }
                 R.id.relative_layout_container_country_currency_activity_home -> {
-
+                    // TODO: do something in here (pending)
                 }
                 R.id.relative_layout_container_history_currency_activity_home -> {
-
+                    // TODO: do something in here (pending)
                 }
                 else -> {
                     /* nothing to do in here */
