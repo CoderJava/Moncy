@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_view_rate_name_item_currency_now"
-        android:text="Tap for detail"
+        android:text="@string/tap_for_detail"
         android:textColor="@color/colorPrimaryDark" />
 
     <ProgressBar
