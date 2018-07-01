@@ -25,9 +25,10 @@ android {
         production {
             applicationIdSuffix ".production"
             buildConfigField("String", "BASE_URL_CURRENCY", "\"http://apilayer.net/api/\"")
-            buildConfigField("String", "BASE_URL_FIXER", "\"http://api.fixer.io/\"")
-            buildConfigField("String", "BASE_URL_COUNTRY", "\"https://restcountries.eu/rest/v2/\"")
             buildConfigField("String", "BASE_URL_CURRENCY_CONVERTER", "\"http://free.currencyconverterapi.com/api/v5/\"")
+            buildConfigField("String", "BASE_URL_FIXER", "\"http://api.fixer.io/\"")
+            buildConfigField("String", "BASE_URL_COUNTRY", "\"https://restcountries.eu/\"")
+            buildConfigField("String", "BASE_URL_COUNTRY_CURRENCY", "\"http://country.io/\"")
             buildConfigField("String", "API_KEY_CURRENCY", "\"257cb471003f7806c5706d137f67a338\"")
         }
     }
