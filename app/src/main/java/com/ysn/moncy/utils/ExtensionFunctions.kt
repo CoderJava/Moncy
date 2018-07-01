@@ -40,23 +40,9 @@ fun View.gone() {
     visibility = View.GONE
 }
 
-fun Activity.showLoading(viewLoading: View, viewContent: ConstraintLayout) {
-    val fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-    fadeIn.setAnimationListener(object : Animation.AnimationListener {
-        override fun onAnimationRepeat(animation: Animation?) {
-            /* nothing to do in here */
-        }
-
-        override fun onAnimationEnd(animation: Animation?) {
-            viewLoading.visible()
-            viewContent.gone()
-        }
-
-        override fun onAnimationStart(animation: Animation?) {
-            /* nothing to do in here */
-        }
-    })
-    viewLoading.startAnimation(fadeIn)
+fun showLoading(viewLoading: View, viewContent: ConstraintLayout) {
+    viewLoading.visible()
+    viewContent.gone()
 }
 
 fun Activity.hideLoading(viewLoading: View, viewContent: ConstraintLayout) {
