@@ -26,4 +26,8 @@
     <string name="from">From</string>
     <string name="tap_for_detail">Tap for detail</string>
     <string name="image_view_icon_arrow_right">image view icon arrow right</string>
+    <string name="country">Country</string>
+    <string name="image_view_flag_country">image view flag country</string>
+    <string name="image_view_symbol_currency">image view symbol currency</string>
+    <string name="image_view_capital_city">image view capital city</string>
 </resources>
