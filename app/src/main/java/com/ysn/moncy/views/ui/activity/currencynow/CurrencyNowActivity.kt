@@ -10,7 +10,7 @@ import com.ysn.moncy.utils.showLoading
 import com.ysn.moncy.utils.showSnackbarMessage
 import com.ysn.moncy.views.base.BaseActivity
 import com.ysn.moncy.views.ui.activity.currencynow.adapter.AdapterCurrencyNow
-import com.ysn.moncy.views.ui.activity.currencynow.adapter.CurrencyNowItemDecoration
+import com.ysn.moncy.utils.ItemDecorationMargin
 import kotlinx.android.synthetic.main.activity_currency_now.*
 import javax.inject.Inject
 
@@ -48,7 +48,7 @@ class CurrencyNowActivity : BaseActivity(), CurrencyNowView {
         text_view_date_time_activity_currency_now.text = datetimeFormatting
         text_view_source_value_activity_currency_now.text = source
         recycler_view_rates_activity_currency_now.layoutManager = LinearLayoutManager(this)
-        recycler_view_rates_activity_currency_now.addItemDecoration(CurrencyNowItemDecoration(this))
+        recycler_view_rates_activity_currency_now.addItemDecoration(ItemDecorationMargin(this))
         recycler_view_rates_activity_currency_now.adapter = adapterCurrencyNow
     }
 
