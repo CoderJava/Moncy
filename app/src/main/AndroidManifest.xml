@@ -22,6 +22,7 @@
         <activity android:name=".views.ui.activity.home.HomeActivity" />
         <activity android:name=".views.ui.activity.aboutapp.AboutAppActivity" />
         <activity android:name=".views.ui.activity.currencynow.CurrencyNowActivity" />
+        <activity android:name=".views.ui.activity.country.CountryActivity" />
     </application>
 
 </manifest>
