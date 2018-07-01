@@ -46,11 +46,21 @@ class RetrofitModule {
     @Provides
     @Named("currencyconverter")
     @Singleton
-    fun provideCurrencyConverterClient(cliet: OkHttpClient): Retrofit = Retrofit.Builder()
+    fun provideCurrencyConverterClient(client: OkHttpClient): Retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL_CURRENCY_CONVERTER)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(cliet)
+            .client(client)
+            .build()
+
+    @Provides
+    @Named("countrycurrency")
+    @Singleton
+    fun provideCountryCurrencyClient(client: OkHttpClient): Retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL_COUNTRY_CURRENCY)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(client)
             .build()
 
 }
