@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.ysn.moncy.api.country.CountryEndpoints
+import com.ysn.moncy.api.countrycurrency.CountryCurrencyEndpoints
 import com.ysn.moncy.api.currency.CurrencyEndpoints
 import com.ysn.moncy.api.currencyconverter.CurrencyConverterEndpoints
 import com.ysn.moncy.api.fixer.FixerEndpoints
@@ -17,7 +18,7 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [(AppModule::class), (RetrofitModule::class), (CurrencyApiModule::class), (FixerApiModule::class), (CountryApiModule::class), (CurrencyConverterApiModule::class), (OkHttpModule::class), (SharedPreferencesModule::class)])
+@Component(modules = [(AppModule::class), (RetrofitModule::class), (CurrencyApiModule::class), (FixerApiModule::class), (CountryApiModule::class), (CurrencyConverterApiModule::class), (CountryCurrencyApiModule::class), (OkHttpModule::class), (SharedPreferencesModule::class)])
 interface AppComponent {
 
     fun application(): Application
@@ -36,6 +37,9 @@ interface AppComponent {
     @Named("currencyconverter")
     fun retrofitCurrencyConverter(): Retrofit
 
+    @Named("countrycurrency")
+    fun retrofitCountryCurrency(): Retrofit
+
     fun currencyEndpoints(): CurrencyEndpoints
 
     fun fixerEndpoints(): FixerEndpoints
@@ -43,6 +47,8 @@ interface AppComponent {
     fun countryEndpoints(): CountryEndpoints
 
     fun currencyConverterEndpoints(): CurrencyConverterEndpoints
+
+    fun countryCurrencyEndpoints(): CountryCurrencyEndpoints
 
     fun cache(): Cache
 
