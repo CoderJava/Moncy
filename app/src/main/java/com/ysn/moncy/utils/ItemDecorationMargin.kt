@@ -1,4 +1,4 @@
-package com.ysn.moncy.views.ui.activity.currencynow.adapter
+package com.ysn.moncy.utils
 
 import android.content.Context
 import android.graphics.Rect
@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.ysn.moncy.R
 
-class CurrencyNowItemDecoration constructor(private val context: Context) : RecyclerView.ItemDecoration() {
+class ItemDecorationMargin constructor(private val context: Context) : RecyclerView.ItemDecoration() {
 
     private val decorationHeight: Int = context.resources.getDimensionPixelSize(R.dimen.margin_16dp)
 
