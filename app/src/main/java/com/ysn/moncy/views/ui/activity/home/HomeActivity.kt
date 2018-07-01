@@ -10,6 +10,7 @@ import com.ysn.moncy.di.component.activity.home.DaggerHomeActivityComponent
 import com.ysn.moncy.di.module.activity.home.HomeActivityModule
 import com.ysn.moncy.views.base.BaseActivity
 import com.ysn.moncy.views.ui.activity.aboutapp.AboutAppActivity
+import com.ysn.moncy.views.ui.activity.country.CountryActivity
 import com.ysn.moncy.views.ui.activity.currencynow.CurrencyNowActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import org.jetbrains.anko.find
@@ -77,7 +78,8 @@ class HomeActivity : BaseActivity(), HomeView, View.OnClickListener {
                     startActivity(intentCurrencyNowActivity)
                 }
                 R.id.relative_layout_container_country_currency_activity_home -> {
-                    // TODO: do something in here (pending)
+                    val intentCountryActivity = intentFor<CountryActivity>()
+                    startActivity(intentCountryActivity)
                 }
                 R.id.relative_layout_container_history_currency_activity_home -> {
                     // TODO: do something in here (pending)
