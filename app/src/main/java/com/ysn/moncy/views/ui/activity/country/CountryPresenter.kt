@@ -24,7 +24,7 @@ class CountryPresenter constructor(private val countryEndpoints: CountryEndpoint
         val observableCountryCurrency = countryCurrencyEndpoints.getCurrencyCode()
         Observable
                 .zip(observableCountry, observableCountryCurrency, BiFunction<List<CountryData>, Map<String, String>, Boolean> { countryDatas, mapCountryCurrency ->
-                    mapCountryCurrency.forEach { key, value ->
+                    mapCountryCurrency.forEach { _, value ->
                         for (index in countryDatas.indices) {
                             val countryData = countryDatas[index]
                             if (countryData.currencies[0].code == value) {
