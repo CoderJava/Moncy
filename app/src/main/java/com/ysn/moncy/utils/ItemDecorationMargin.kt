@@ -10,15 +10,13 @@ class ItemDecorationMargin constructor(private val context: Context) : RecyclerV
 
     private val decorationHeight: Int = context.resources.getDimensionPixelSize(R.dimen.margin_16dp)
 
-    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         super.getItemOffsets(outRect, view, parent, state)
 
-        if (parent != null && view != null) {
-            val itemPosition = parent.getChildAdapterPosition(view)
-            val totalCount = parent.adapter.itemCount
-            if (itemPosition >= 0 && itemPosition < totalCount - 1) {
-                outRect?.bottom = decorationHeight
-            }
+        val itemPosition = parent.getChildAdapterPosition(view)
+        val totalCount = parent.adapter!!.itemCount
+        if (itemPosition >= 0 && itemPosition < totalCount - 1) {
+            outRect.bottom = decorationHeight
         }
     }
 

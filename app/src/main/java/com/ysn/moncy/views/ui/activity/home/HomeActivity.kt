@@ -15,6 +15,7 @@ import com.ysn.moncy.views.ui.activity.currencynow.CurrencyNowActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), HomeView, View.OnClickListener {
@@ -82,7 +83,7 @@ class HomeActivity : BaseActivity(), HomeView, View.OnClickListener {
                     startActivity(intentCountryActivity)
                 }
                 R.id.relative_layout_container_history_currency_activity_home -> {
-                    // TODO: do something in here (pending)
+                    toast("This feature coming soon")
                 }
                 else -> {
                     /* nothing to do in here */
