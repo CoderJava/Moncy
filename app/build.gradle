@@ -5,14 +5,14 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion '28.0.2'
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.ysn.moncy"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 3
         versionName "1.2"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -43,15 +43,15 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     /* Android support */
-    implementation "com.android.support:appcompat-v7:$android_support_version"
-    implementation "com.android.support:design:$android_support_version"
-    implementation "com.android.support:support-v4:$android_support_version"
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     /* ConstraintLayout */
-    implementation "com.android.support.constraint:constraint-layout:1.1.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.0-alpha2"
 
     /* Testing framework */
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-beta02', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation "junit:junit:4.12"
@@ -99,9 +99,5 @@ dependencies {
 
     /* Lottie - Render After Effects animations natively */
     implementation "com.airbnb.android:lottie:$lottie_version"
-}
 
-repositories {
-    mavenCentral()
-    google()
 }

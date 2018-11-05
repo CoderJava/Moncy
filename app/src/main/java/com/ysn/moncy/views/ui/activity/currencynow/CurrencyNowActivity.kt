@@ -1,7 +1,7 @@
 package com.ysn.moncy.views.ui.activity.currencynow
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ysn.moncy.R
 import com.ysn.moncy.di.component.activity.currencynow.DaggerCurrencyNowActivityComponent
 import com.ysn.moncy.di.module.activity.currencynow.CurrencyNowActivityModule

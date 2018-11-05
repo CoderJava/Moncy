@@ -1,7 +1,7 @@
 package com.ysn.moncy.views.base
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.ysn.moncy.di.component.AppComponent
 import com.ysn.moncy.views.base.mvp.BasePresenter
 import com.ysn.moncy.views.base.mvp.BaseView
