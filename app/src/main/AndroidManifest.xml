@@ -12,18 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.ui.activity.splashscreen.SplashScreenActivity">
+        <!--<activity android:name=".views.ui.activity.splashscreen.SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
+        <activity android:name=".views.ui.activity.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.ui.activity.home.HomeActivity" />
-        <activity android:name=".views.ui.activity.aboutapp.AboutAppActivity" />
+        <!--<activity android:name=".views.ui.activity.aboutapp.AboutAppActivity" />
         <activity android:name=".views.ui.activity.currencynow.CurrencyNowActivity" />
         <activity android:name=".views.ui.activity.country.CountryActivity" />
-        <activity android:name=".views.ui.activity.historicalcurrency.HistoricalCurrencyActivity" />
+        <activity android:name=".views.ui.activity.historicalcurrency.HistoricalCurrencyActivity" />-->
     </application>
 
 </manifest>
