@@ -20,6 +20,12 @@ android {
         versionCode 3
         versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -51,6 +57,7 @@ dependencies {
 
     /* Android support */
     implementation "androidx.appcompat:appcompat:$support_version"
+    implementation "com.google.android.material:material:1.1.0-alpha01"
 
     /* Arch Components */
     implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
@@ -58,10 +65,14 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
+    /* MultiDex */
+    implementation "androidx.multidex:multidex:2.0.0"
+
     /* ConstraintLayout */
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-alpha2"
 
     /* Testing framework */
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-beta02', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -92,8 +103,6 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
-
-
 
     /* Memory leak detection */
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
